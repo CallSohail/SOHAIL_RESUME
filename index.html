@@ -670,7 +670,7 @@
                         let chatHistory = [];
                         chatHistory.push({ role: "user", parts: [{ text: prompt }] });
                         const payload = { contents: chatHistory };
-                        const apiKey = "";
+                        const apiKey = "AIzaSyCgygjemkTqlsisoLcmVJP7XF__QFvr9ww"; // YOUR API KEY HERE
                         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
                         const response = await fetch(apiUrl, {
@@ -767,7 +767,7 @@ Concise Answer:`;
                         let chatHistory = [];
                         chatHistory.push({ role: "user", parts: [{ text: prompt }] });
                         const payload = { contents: chatHistory };
-                        const apiKey = "AIzaSyCgygjemkTqlsisoLcmVJP7XF__QFvr9ww";
+                        const apiKey = "AIzaSyCgygjemkTqlsisoLcmVJP7XF__QFvr9ww"; // YOUR API KEY HERE
                         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
                         const response = await fetch(apiUrl, {
