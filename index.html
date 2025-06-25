@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Sohail - Data Scientist & AI/ML Engineer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            /* Monospace font applied globally */
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            background-color: #f8f9fa; /* Very light gray background for the page */
+            color: #212529; /* Darker default text for professionalism */
+            line-height: 1.6; /* Improved line height for readability */
+            scroll-behavior: smooth;
+        }
+        .resume-container {
+            max-width: 850px; /* Slightly wider container for more breathing room */
+            margin: 2.5rem auto; /* More vertical margin */
+            padding: 3rem; /* Increased padding inside the container */
+            background-color: #ffffff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* More pronounced, soft shadow */
+            border-radius: 12px; /* Slightly more rounded corners */
+            overflow: hidden;
+            border: 1px solid #e9ecef; /* Very subtle border around the main container */
+        }
+        .header-main {
+            display: flex;
+            flex-direction: column; /* Stack on small screens */
+            align-items: center; /* Center horizontally on small screens */
+            margin-bottom: 2.5rem; /* More space after header */
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #dee2e6; /* Clean, light border */
+            text-align: center; /* Center text for header on small screens */
+        }
+        @media (min-width: 768px) {
+            .header-main {
+                flex-direction: row; /* Row on larger screens */
+                justify-content: space-between; /* Space out name and contact info */
+                text-align: left; /* Align text to left for larger screens */
+            }
+            .header-text {
+                flex-grow: 1;
+            }
+        }
+
+        .section-header {
+            color: #004d40; /* Darker green-blue for section titles (professional look) */
+            font-size: 2rem; /* Larger and more impactful section titles */
+            font-weight: 700; /* Bolder titles */
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #00796b; /* Matching, slightly darker green-blue border */
+            text-align: left; /* Align section headers to the left */
+            display: flex; /* Enable flex for section header and button */
+            justify-content: space-between; /* Space between title and button */
+            align-items: center; /* Align items vertically */
+        }
+        .profile-text {
+            font-size: 1rem; /* Slightly larger text for main paragraphs */
+            margin-bottom: 2.5rem;
+            line-height: 1.7; /* Improved line height */
+            color: #343a40; /* Darker gray for body text */
+        }
+        .experience-item, .education-item, .project-item, .skill-category-card, .certification-item, .extracurricular-item {
+            margin-bottom: 1.75rem; /* More spacing between items */
+            padding-bottom: 1rem; /* More padding for separation */
+            border-bottom: 1px dashed #e0e0e0; /* Finer dashed line */
+        }
+        .experience-item:last-child, .education-item:last-child, .project-item:last-child, .skill-category-card:last-child, .certification-item:last-child, .extracurricular-item:last-child {
+            border-bottom: none;
+        }
+        .item-title {
+            font-size: 1.2rem; /* Increased item title size */
+            font-weight: 700; /* Extra bold for clarity */
+            color: #212529;
+            margin-bottom: 0.35rem;
+        }
+        .item-subheading {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 0.35rem;
+        }
+        .item-duration-location {
+            font-size: 0.9rem; /* Slightly larger duration text */
+            color: #6c757d;
+            margin-bottom: 1rem;
+        }
+        .description-list li {
+            margin-bottom: 0.5rem; /* More spacing between list items */
+            font-size: 0.95rem; /* Slightly larger list item text */
+            line-height: 1.5;
+            color: #343a40;
+        }
+        .contact-info-header span {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 1.8rem; /* More spacing between contact items */
+            margin-bottom: 0.6rem;
+            font-size: 0.98rem; /* Slightly larger contact info text */
+            color: #555;
+        }
+        .contact-info-header i {
+            margin-right: 0.7rem; /* More space for icons */
+            color: #00796b; /* Muted blue for icons to match theme */
+            font-size: 1.25rem;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted min width for skills grid */
+            gap: 2rem; /* More gap in skills grid */
+            margin-top: 1.5rem;
+        }
+        .skill-list li {
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+            color: #343a40;
+        }
+        .skill-list i {
+            margin-right: 0.6rem;
+            color: #00796b; /* Muted blue for skill icons */
+        }
+        a {
+            color: #00796b; /* Main link color */
+            text-decoration: none;
+            transition: color 0.3s ease, text-decoration 0.3s ease;
+        }
+        a:hover {
+            color: #004d40; /* Darker on hover */
+            text-decoration: underline;
+        }
+        .footer {
+            text-align: center;
+            padding: 1.8rem; /* More padding for the footer */
+            margin-top: 3rem; /* More space above the footer */
+            background-color: #ffffff;
+            color: #6c757d; /* Lighter gray for footer text */
+            font-size: 0.9rem;
+            border-radius: 0 0 8px 8px; /* Consistent bottom rounding */
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow on top of footer */
+            border-top: 1px solid #e9ecef; /* Light border on top */
+        }
+
+        /* Typing animation specific styles */
+        .typing-text::after {
+            content: '|';
+            animation: blink-caret .75s step-end infinite;
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: currentColor }
+        }
+
+        /* Modal styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .modal-close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #333;
+        }
+        .modal-body {
+            margin-top: 1rem;
+            white-space: pre-wrap; /* Preserves whitespace and line breaks from LLM output */
+        }
+        /* AI Demo specific styles */
+        .ai-demo-card {
+            background-color: #f8f8f8;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-top: 1.5rem; /* Space from contact info */
+            text-align: left; /* Ensure text inside demo card aligns left */
+        }
+        .ai-demo-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+        .ai-demo-button {
+            background-color: #00796b;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            width: 100%; /* Make button full width */
+        }
+        .ai-demo-button:hover {
+            background-color: #005f56;
+        }
+        .ai-response-area {
+            background-color: #e6f7ff;
+            border: 1px solid #b0e0e6;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            white-space: pre-wrap; /* Preserve formatting from LLM */
+        }
+        .ai-response-area p {
+            margin: 0; /* Remove default paragraph margin */
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-6 md:p-8 lg:p-10">
+    <div class="resume-container">
+        <!-- Header Section -->
+        <header class="header-main">
+            <div>
+                <h1 class="text-4xl font-bold text-gray-900 leading-tight">Muhammad Sohail</h1>
+                <p class="text-xl text-gray-700 mt-1 mb-3">
+                    <span id="dynamic-title" class="typing-text"></span>
+                </p>
+            </div>
+            <div class="contact-info-header flex flex-wrap justify-center md:justify-end mt-4 md:mt-0">
+                <span><i class="fas fa-envelope"></i> <a href="mailto:muhammad.sohail@telecom-sud-paris.eu">muhammad.sohail@telecom-sud-paris.eu</a></span>
+                <span><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/muhammadsohail951" target="_blank" rel="noopener noreferrer">LinkedIn/muhammadsohail951</a></span>
+                <span><i class="fas fa-globe"></i> <a href="https://sohail.logiclensai.com/" target="_blank" rel="noopener noreferrer">sohail.logiclensai.com</a></span>
+                <!-- Optional: GitHub Link -->
+                <!-- <span><i class="fab fa-github"></i> <a href="https://github.com/your_github_username" target="_blank" rel="noopener noreferrer">GitHub/your_github_username</a></span> -->
+            </div>
+        </header>
+
+        <!-- Profile Section -->
+        <section id="profile" class="mb-8">
+            <h2 class="section-header">
+                Profile
+                <button class="summarize-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded text-sm transition duration-300 ease-in-out flex items-center" data-section-id="profile">
+                    Summarize ✨
+                </button>
+            </h2>
+            <p class="profile-text">
+                I am an AI & Data Science intern deeply interested in NLP and chatbot development. Currently pursuing my Master's at Telecom SudParis, I bring six months of experience as a Data Analyst intern and nearly three years of freelancing in data science and machine learning.
+                <br><br>
+                My expertise lies in developing intelligent HR chatbots using Large Language Models (LLMs) and Retrieval-Augmented Generation (RAG) to enhance HR automation. I am proficient in Machine Learning & AI (Keras, PyTorch, Transformers), NLP & Chatbots (SpaCy, NLTK, LLMs), and Data Science & Analytics (Python, SQL, Pandas, Matplotlib).
+                <br><br>
+                I am passionate about using AI to create practical, data-driven solutions and am always open to new opportunities and collaborations.
+            </p>
+        </section>
+
+        <!-- Interactive AI Resume Q&A Section -->
+        <section id="ai-interactive-tool" class="mb-8">
+            <h2 class="section-header">
+                Ask Me Anything (AI Q&A)
+                <button class="summarize-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded text-sm transition duration-300 ease-in-out flex items-center" data-section-id="ai-interactive-tool">
+                    Summarize ✨
+                </button>
+            </h2>
+            <div class="ai-demo-card w-full">
+                <p class="text-gray-700 mb-4">Curious about my resume? Ask me a question! This AI can answer based on all the information provided in my resume. For example, "What is Sohail's educational background?" or "Tell me more about the HR Chatbot project."</p>
+                <input type="text" id="aiPromptInputResume" class="ai-demo-input" placeholder="Ask a question about my resume...">
+                <button id="generateResponseBtnResume" class="ai-demo-button flex items-center justify-center">
+                    Get AI Answer
+                    <i id="aiLoadingSpinnerResume" class="fas fa-spinner fa-spin ml-2 hidden"></i>
+                </button>
+                <div id="aiResponseAreaResume" class="ai-response-area mt-4">
+                    <p>AI's answer will appear here.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Professional Experience Section -->
+        <section id="experience" class="mb-8">
+            <h2 class="section-header">
+                Professional Experience
+                <button class="summarize-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded text-sm transition duration-300 ease-in-out flex items-center" data-section-id="experience">
+                    Summarize ✨
+                </button>
+            </h2>
+            <div class="space-y-6">
+                <!-- Data Science Intern - Université Paris-Saclay -->
+                <div class="experience-item">
+                    <div class="flex justify-between items-baseline mb-1">
+                        <h3 class="item-title">Data Science Intern</h3>
+                        <span class="item-duration-location">March 2025 - Present | Evry, Île-de-France, France</span>
+                    </div>
+                    <p class="item-subheading">Université Paris-Saclay</p>
+                    <ul class="list-disc pl-5 text-gray-700 description-list">
+                        <li>Designing and developing an intelligent HR chatbot prototype to automate staff inquiries on recruitment, training, leave policies, and regulatory compliance.</li>
+                        <li>Integrating Large Language Models (LLMs) via APIs and Retrieval-Augmented Generation (RAG) systems to enhance response accuracy using the university's internal databases.</li>
+                        <li>Implementing validation mechanisms to ensure compliance and prevent incorrect/inappropriate responses.</li>
+                        <li>Building a user-friendly interface for seamless staff interaction and deploying the platform within the university's data center.</li>
+                        <li>Innovating advanced solutions, including fine-tuning open-source models to align with institutional policies and optimizing response filtering.</li>
+                        <li>Collaborating with engineers to align technical architecture with organizational needs and HR workflows.</li>
+                    </ul>
+                </div>
+                <!-- Data Analyst Intern - Code Clause Pvt Ltd. -->
+                <div class="experience-item">
+                    <div class="flex justify-between items-baseline mb-1">
+                        <h3 class="item-title">Data Analyst Intern</h3>
+                        <span class="item-duration-location">September 2023 - April 2024 | Pune, Maharashtra, India</span>
+                    </div>
+                    <p class="item-subheading">CodeClause</p>
+                    <ul class="list-disc pl-5 text-gray-700 description-list">
+                        <li>Developed predictive machine learning models, improving data-driven decision-making by 30%.</li>
+                        <li>Analyzed large datasets to extract key business insights, reducing manual processing time by 40%.</li>
+                        <li>Automated data pipelines using Python, Pandas, and SQL, reducing data processing time by 25%.</li>
+                        <li>Designed and implemented interactive data visualizations using Matplotlib and Seaborn, enhancing reporting clarity.</li>
+                        <li>Technologies Used: Python, Pandas, SQL, Scikit-learn, Matplotlib, Seaborn, Jupyter Notebook.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Extracurricular Activities Section -->
+        <section id="extracurricular-activities" class="mb-8">
+            <h2 class="section-header">
+                Extracurricular Activities
+                <button class="summarize-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded text-sm transition duration-300 ease-in-out flex items-center" data-section-id="extracurricular-activities">
+                    Summarize ✨
+                </button>
+            </h2>
+            <div class="space-y-6">
+                <div class="extracurricular-item">
+                    <div class="flex justify-between items-baseline mb-1">
+                        <h3 class="item-title">Campus Ambassador</h3>
+                        <span class="item-duration-location">August 2021 - December 2022 (1 year 5 months) | Connected Pakistan</span>
+                    </div>
+                    <p class="item-subheading">Connected Pakistan</p>
+                    <ul class="list-disc pl-5 text-gray-700 description-list">
+                        <li>Served as the university ambassador for Connected Pakistan, bridging students with conferences, workshops, and skill-building events to foster professional growth.</li>
+                        <li>Coordinated and promoted 10+ events on campus, driving participation from 150+ students and enhancing their technical and career-oriented skills.</li>
+                        <li>Collaborated with event organizers to tailor content to student interests, emphasizing data science, AI, and networking opportunities.</li>
+                        <li>Leveraged social media platforms and campus networks to amplify event visibility, increasing student engagement by 40% during my tenure.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Projects Section -->
+        <section id="research-projects" class="mb-8">
+            <h2 class="section-header">
+                Research Projects
+                <button class="summarize-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded text-sm transition duration-300 ease-in-out flex items-center" data-section-id="research-projects">
+                    Summarize ✨
+                </button>
+            </h2>
+            <div class="space-y-6">
+                <!-- Bridging the Gap in Text-Based Emotion Detection -->
+                <div class="project-item">
+                    <div class="flex justify-between items-baseline mb-1">
+                        <h3 class="item-title">Bridging the Gap in Text-Based Emotion Detection</h3>
+                        <span class="item-duration-location">October 2024 - Present | Associated with Institut Polytechnique de Paris</span>
+                    </div>
+                    <p class="item-subheading">Detecting perceived emotions in text for cross-lingual analysis.</p>
+                    <ul class="list-disc pl-5 text-gray-700 description-list">
+                        <li>This task focuses on detecting perceived emotions in text, including predicting emotions (joy, sadness, fear, anger, surprise, disgust), estimating emotion intensity, and cross-lingual emotion detection.</li>
+                        <li>The dataset covers a variety of languages, highlighting the complexity of interpreting emotions across cultures.</li>
+                        <li>Skills: Deep Learning, TensorFlow, Keras, PyTorch, Natural Language Processing: NLTK, SpaCy, Transformers, Data Processing: Pandas, NumPy, Visualization: Matplotlib, Seaborn, Deployment: Streamlit.</li>
+                    </ul>
+                    <!-- <p class="mt-2 text-sm"><a href="https://project.link/emotion-detection-research" target="_blank" rel="noopener noreferrer"><i class="fas fa-link mr-1"></i> Project Link</a></p> -->
+                </div>
+                <!-- Dynamic Cooling System in Data Centers Using IoT & LSTM -->
+                <div class="project-item">
+                    <div class="flex justify-between items-baseline mb-1">
+                        <h3 class="item-title">Dynamic Cooling System in Data Centers Using IoT & LSTM</h3>
+                        <span class="item-duration-location">Master's Program Project | Associated with Institut Polytechnique de Paris</span>
+                    </div>
+                    <p class="item-subheading">Optimizing energy consumption in data centers with IoT and AI.</p>
+                    <ul class="list-disc pl-5 text-gray-700 description-list">
+                        <li>Developed a dynamic cooling system for data centers combining air and liquid cooling, adjusting in real time based on sensor data.</li>
+                        <li>IoT sensors collect temperature, humidity, and energy data; an LSTM neural network processes this information to predict cooling needs.</li>
+                        <li>Benefits: Optimizes energy consumption, reducing carbon footprint, and enhances system reliability and equipment lifespan.</li>
+                        <li>This project features a robust, multi-tier architecture with data collection, edge processing, central decision-making, and actuator control.</li>
+                        <li>Completed as part of my Master’s program at Telecom SudParis, it showcases my ability to integrate predictive analytics and smart systems to drive energy efficiency.</li>
+                        <li>Skills: IoT Sensor Networks, LSTM Neural Networks, Predictive Analytics, System Architecture, Energy Efficiency.</li>
+                    </ul>
+                    <p class="mt-2 text-sm"><a href="https://drive.google.com/file/d/19cPWPWUFmizD4H7woCS7pQ2Xb_430EDupi/view?usp=sharing&usp=embed_facebook" target="_blank" rel="noopener noreferrer"><i class="fas fa-link mr-1"></i> Project Link</a></p>
+                </div>
+                <!-- MediBot Chatbot -->
+                <div class="project-item">
+                    <div class="flex justify-between items-baseline mb-1">
+                        <h3 class="item-title">MediBot Chatbot</h3>
+                        <span class="item-duration-location">Duration: 2 Months</span>
+                    </div>
+                    <p class="item-subheading">AI-powered medical assistant for trusted health information.</p>
+                    <ul class="list-disc pl-5 text-gray-700 description-list">
+                        <li>MediBot Chatbot is an AI-powered medical assistant that answers questions using trusted medical information, pulling data from The GALE Encyclopedia of Medicine (Second Edition) and returning answers based strictly on that context.</li>
+                        <li>The chatbot is built with Python and uses modern tools like LangChain to manage the conversation flow, FAISS for fast information retrieval, and Hugging Face’s Mistral-7B as the language model.</li>
+                        <li>The user interface is built with Streamlit, making it simple and user-friendly, and the project is deployed for free on Hugging Face Spaces.</li>
+                        <li>This project helped me learn how to integrate different AI technologies and improve prompt engineering so that the answers remain accurate and context-based.</li>
+                        <li>Skills: Python, Deployment: Streamlit, LangChain, FAISS, Hugging Face.</li>
+                    </ul>
+                    <p class="mt-2 text-sm"><a href="https://huggingface.co/spaces/msohail21/medibot-chatbot" target="_blank" rel="noopener noreferrer"><i class="fas fa-link mr-1"></i> Project Link</a></p>
+                </div>
+                <!-- Basic Image Classification with Tensorflow -->
+                <div class="project-item">
+                    <div class="flex justify-between items-baseline mb-1">
+                        <h3 class="item-title">Basic Image Classification with Tensorflow</h3>
+                        <span class="item-duration-location">July 2022 - August 2022</span>
+                    </div>
+                    <p class="item-subheading">Simple image classifier using TensorFlow and CNN.</p>
+                    <ul class="list-disc pl-5 text-gray-700 description-list">
+                        <li>Built a simple image classifier using TensorFlow; the model distinguishes between image categories using a convolutional neural network (CNN).</li>
+                        <li>Preprocessed image data—resizing, normalizing, and augmenting to boost performance.</li>
+                        <li>The CNN, built with TensorFlow’s Keras API, learned to identify key features in images; techniques like dropout and pooling were used to improve accuracy and reduce overfitting.</li>
+                        <li>This project sharpened skills in deep learning, model evaluation, tuning hyperparameters, and troubleshooting model performance.</li>
+                        <li>Skills: TensorFlow, Keras, Convolutional Neural Networks (CNN), Python, Data Processing: Pandas, NumPy, Model Tuning.</li>
+                    </ul>
+                    <p class="mt-2 text-sm"><a href="https://github.com/CallSohail/Basic-Image-Classification-With-Tensorflow" target="_blank" rel="noopener noreferrer"><i class="fas fa-link mr-1"></i> Project Link</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="mb-8">
+            <h2 class="section-header">
+                Education
+                <button class="summarize-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded text-sm transition duration-300 ease-in-out flex items-center" data-section-id="education">
+                    Summarize ✨
+                </button>
+            </h2>
+            <div class="space-y-6">
+                <!-- MSc M2 in Data Science -->
+                <div class="education-item">
+                    <div class="flex justify-between items-baseline mb-1">
+                        <h3 class="item-title">Master's degree, Data Science for Network Intelligence</h3>
+                        <span class="item-duration-location">September 2024 - September 2025 | Institut Polytechnique de Paris / Télécom SudParis, France</span>
+                    </div>
+                    <p class="item-subheading">Institut Polytechnique de Paris / Télécom SudParis</p>
+                    <ul class="list-disc pl-5 text-gray-700 description-list">
+                        <li>Current GPA: 15.81.</li>
+                        <li>Focused coursework includes: Advanced Data Science, Data Visualization Techniques, Deep Learning Architectures, Blockchain Technologies, Network Intelligence, Internet of Things (IoT) Applications, Distributed Networking Systems, and Business Modelling for Data-Driven Solutions.</li>
+                    </ul>
+                </div>
+                <!-- Bachelor of Computer Science -->
+                <div class="education-item">
+                    <div class="flex justify-between items-baseline mb-1">
+                        <h3 class="item-title">Bachelor's degree, Computer Science</h3>
+                        <span class="item-duration-location">2019 - 2023 | University of Malakand, Pakistan</span>
+                    </div>
+                    <p class="item-subheading">University of Malakand</p>
+                    <ul class="list-disc pl-5 text-gray-700 description-list">
+                        <li>Graduated with a commendable GPA of 3.75, demonstrating strong foundational knowledge in computer science.</li>
+                        <li>Comprehensive curriculum covered: Core Programming Languages, Web Development Principles, Database Management Systems, Operating Systems Internals, Networking Fundamentals, Software Engineering Methodologies, Artificial Intelligence Concepts, and foundational Mathematics & Statistics.</li>
+                    </ul>
+                </div>
+                <!-- Intermediate - GOVT POST GRADUATE JAHANZEB COLLEGE -->
+                <div class="education-item">
+                    <div class="flex justify-between items-baseline mb-1">
+                        <h3 class="item-title">Intermediate, Pre-Engineering</h3>
+                        <span class="item-duration-location">June 2017 - June 2019 | GOVT POST GRADUATE JAHANZEB COLLEGE</span>
+                    </div>
+                    <p class="item-subheading">GOVT POST GRADUATE JAHANZEB COLLEGE</p>
+                </div>
+                <!-- Matric - Al Azhar Model School Rabat -->
+                <div class="education-item">
+                    <div class="flex justify-between items-baseline mb-1">
+                        <h3 class="item-title">Matric, Science</h3>
+                        <span class="item-duration-location">March 2015 - March 2017 | Al Azhar Model School Rabat</span>
+                    </div>
+                    <p class="item-subheading">Al Azhar Model School Rabat</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="mb-8">
+            <h2 class="section-header">
+                Skills
+                <button class="summarize-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded text-sm transition duration-300 ease-in-out flex items-center" data-section-id="skills">
+                    Summarize ✨
+                </button>
+            </h2>
+            <div class="skills-grid">
+                <div class="skill-category-card">
+                    <h3 class="item-title mb-2">Technical Proficiencies</h3>
+                    <ul class="list-disc pl-5 text-gray-700 skill-list">
+                        <li><i class="fas fa-code"></i> Languages: Python (Advanced), C++, Java, SQL (MySQL, PostgreSQL)</li>
+                        <li><i class="fas fa-cogs"></i> Frameworks/Libraries: TensorFlow, Keras, PyTorch, Scikit-learn, XGBoost, LightGBM</li>
+                        <li><i class="fas fa-cubes"></i> Specific ML/AI Skills: Convolutional Neural Networks (CNN), Model Tuning, IoT Sensor Networks, LSTM Neural Networks, Predictive Analytics, System Architecture, Energy Efficiency</li>
+                        <li><i class="fas fa-cube"></i> LLM/NLP Tools: LangChain, FAISS, Hugging Face, Llama-index, Unstructured.io, Docling, LlamaParse, pdfplumber, SpaCy, NLTK, Transformers</li>
+                        <li><i class="fas fa-chart-line"></i> Data Analysis/Viz: Pandas, NumPy, Matplotlib, Seaborn, Power BI, Tableau, Excel, Jupyter Notebook</li>
+                        <li><i class="fas fa-tools"></i> Dev Tools: Git, GitHub, VS Code, Streamlit, Gradio</li>
+                    </ul>
+                </div>
+                <div class="skill-category-card">
+                    <h3 class="item-title mb-2">ML & AI Expertise</h3>
+                    <ul class="list-disc pl-5 text-gray-700 skill-list">
+                        <li><i class="fas fa-brain"></i> Supervised/Unsupervised Learning</li>
+                        <li><i class="fas fa-database"></i> Data Preprocessing & Feature Engineering</li>
+                        <li><i class="fas fa-sitemap"></i> Neural Networks & Deep Learning</li>
+                        <li><i class="fas fa-comments"></i> Chatbot Development</li>
+                        <li><i class="fas fa-search"></i> Retrieval-Augmented Generation (RAG)</li>
+                        <li><i class="fas fa-flask"></i> Model Training, Evaluation & Deployment</li>
+                        <li><i class="fas fa-lightbulb"></i> Large Language Models (LLMs)</li>
+                    </ul>
+                </div>
+                <div class="skill-category-card">
+                    <h3 class="item-title mb-2">Languages</h3>
+                    <ul class="list-disc pl-5 text-gray-700 skill-list">
+                        <li><i class="fas fa-globe"></i> English: Fluent (Professional Working)</li>
+                        <li><i class="fas fa-globe"></i> Pashto: Native/Bilingual</li>
+                        <li><i class="fas fa-globe"></i> Urdu: Native/Bilingual</li>
+                        <li><i class="fas fa-globe"></i> French: Basic</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="mb-8">
+            <h2 class="section-header">
+                Certifications
+                <button class="summarize-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded text-sm transition duration-300 ease-in-out flex items-center" data-section-id="certifications">
+                    Summarize ✨
+                </button>
+            </h2>
+            <div class="space-y-4">
+                <div class="certification-item">
+                    <h3 class="item-title">Create a Profile and Network on LinkedIn</h3>
+                </div>
+                <div class="certification-item">
+                    <h3 class="item-title">Machine Learning with Python</h3>
+                </div>
+                <div class="certification-item">
+                    <h3 class="item-title">Introduction to Deep Learning & Neural Networks with Keras</h3>
+                </div>
+                <div class="certification-item">
+                    <h3 class="item-title">Python (Basic) Certificate</h3>
+                </div>
+                <div class="certification-item">
+                    <h3 class="item-title">Statement of Accomplishment</h3>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="footer">
+        &copy; 2025 Muhammad Sohail. All rights reserved.
+    </footer>
+
+    <!-- Summary Modal -->
+    <div id="summaryModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="modal-close-button" onclick="closeModal()">&times;</button>
+            <h3 class="text-xl font-bold mb-3">Summary</h3>
+            <div id="summaryContent" class="modal-body text-gray-700">
+                <!-- Summary will be loaded here -->
+            </div>
+            <div id="loadingIndicator" class="text-center mt-4 hidden">
+                <i class="fas fa-spinner fa-spin text-blue-500 text-2xl"></i>
+                <p class="text-gray-600">Generating summary...</p>
+            </div>
+            <div id="errorIndicator" class="text-center mt-4 hidden text-red-500">
+                <p>Error generating summary. Please try again.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dynamic Title Typing Animation
+        const titles = [
+            "Data Scientist",
+            "AI/ML Engineer",
+            "LLM Specialist",
+            "NLP & Chatbot Developer",
+            "Predictive Analytics Expert"
+        ];
+        let titleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const dynamicTitleElement = document.getElementById("dynamic-title");
+        const typingSpeed = 100; // milliseconds per character
+        const deletingSpeed = 50; // milliseconds per character
+        const delayBetweenTitles = 1500; // milliseconds before next action
+
+        function typeWriter() {
+            const currentTitle = titles[titleIndex];
+            if (isDeleting) {
+                dynamicTitleElement.textContent = currentTitle.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                dynamicTitleElement.textContent = currentTitle.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let currentTypingSpeed = isDeleting ? deletingSpeed : typingSpeed;
+
+            if (!isDeleting && charIndex === currentTitle.length) {
+                currentTypingSpeed = delayBetweenTitles;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                titleIndex = (titleIndex + 1) % titles.length;
+                currentTypingSpeed = typingSpeed;
+            }
+
+            setTimeout(typeWriter, currentTypingSpeed);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            typeWriter();
+
+            // LLM Summarizer Functionality
+            const summarizeButtons = document.querySelectorAll('.summarize-btn');
+            const summaryModal = document.getElementById('summaryModal');
+            const summaryContent = document.getElementById('summaryContent');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            const errorIndicator = document.getElementById('errorIndicator');
+
+            summarizeButtons.forEach(button => {
+                button.addEventListener('click', async () => {
+                    const sectionId = button.dataset.sectionId;
+                    const sectionElement = document.getElementById(sectionId);
+                    let contentToSummarize = "";
+
+                    if (sectionElement) {
+                        // Clone the section to remove the button before extracting text
+                        const sectionClone = sectionElement.cloneNode(true);
+                        const buttonToRemove = sectionClone.querySelector('.summarize-btn');
+                        if (buttonToRemove) {
+                            buttonToRemove.remove();
+                        }
+                        contentToSummarize = sectionClone.textContent; // Use textContent for full text including hidden parts if any
+                    }
+
+                    summaryModal.classList.remove('hidden');
+                    summaryContent.textContent = '';
+                    loadingIndicator.classList.remove('hidden');
+                    errorIndicator.classList.add('hidden');
+
+                    const prompt = `Please provide a concise summary of the following resume section. Keep it to 3-5 sentences and highlight key achievements and responsibilities:\n\n${contentToSummarize.trim()}`;
+
+                    try {
+                        let chatHistory = [];
+                        chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                        const payload = { contents: chatHistory };
+                        const apiKey = "";
+                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        const result = await response.json();
+
+                        if (result.candidates && result.candidates.length > 0 &&
+                            result.candidates[0].content && result.candidates[0].content.parts &&
+                            result.candidates[0].content.parts.length > 0) {
+                            const text = result.candidates[0].content.parts[0].text;
+                            summaryContent.textContent = text;
+                        } else {
+                            summaryContent.textContent = "Could not generate summary. Unexpected API response.";
+                            errorIndicator.classList.remove('hidden');
+                        }
+                    } catch (error) {
+                        console.error("Error calling Gemini API:", error);
+                        summaryContent.textContent = "Failed to fetch summary due to a network or API error.";
+                        errorIndicator.classList.remove('hidden');
+                    } finally {
+                        loadingIndicator.classList.add('hidden');
+                    }
+                });
+            });
+
+            window.closeModal = function() {
+                summaryModal.classList.add('hidden');
+                summaryContent.textContent = '';
+            };
+
+            summaryModal.addEventListener('click', (event) => {
+                if (event.target === summaryModal) {
+                    closeModal();
+                }
+            });
+
+            // Interactive AI Resume Q&A Logic
+            const aiPromptInputResume = document.getElementById('aiPromptInputResume');
+            const generateResponseBtnResume = document.getElementById('generateResponseBtnResume');
+            const aiResponseAreaResume = document.getElementById('aiResponseAreaResume');
+            const aiLoadingSpinnerResume = document.getElementById('aiLoadingSpinnerResume');
+
+            // Function to gather ALL resume text dynamically from the DOM
+            function getResumeText() {
+                const resumeContainer = document.querySelector('.resume-container');
+                if (resumeContainer) {
+                    // Clone the container to remove interactive elements before extracting text
+                    const clone = resumeContainer.cloneNode(true);
+
+                    // Remove summarize buttons
+                    clone.querySelectorAll('.summarize-btn').forEach(btn => btn.remove());
+
+                    // Remove the AI Q&A input/button/response area itself to avoid self-referencing issues
+                    const aiToolSection = clone.querySelector('#ai-interactive-tool');
+                    if (aiToolSection) {
+                        aiToolSection.remove();
+                    }
+
+                    // Get textContent from the cloned and cleaned resume container
+                    return clone.textContent.trim();
+                }
+                return "";
+            }
+
+            if (generateResponseBtnResume) {
+                generateResponseBtnResume.addEventListener('click', async () => {
+                    const userQuestion = aiPromptInputResume.value.trim();
+                    if (!userQuestion) {
+                        aiResponseAreaResume.innerHTML = '<p class="text-red-500">Please enter a question!</p>';
+                        return;
+                    }
+
+                    aiResponseAreaResume.innerHTML = '<p class="text-gray-600">Thinking...</p>';
+                    aiLoadingSpinnerResume.classList.remove('hidden');
+                    generateResponseBtnResume.disabled = true;
+
+                    const resumeContent = getResumeText(); // Get the entire resume content
+                    const prompt = `Based on the following resume content, answer the user's question. Be concise, professional, and only use information explicitly stated in the resume. If the information is not in the resume, state that you don't have enough information.
+
+Resume Content:
+"""
+${resumeContent}
+"""
+
+User Question: "${userQuestion}"
+
+Concise Answer:`;
+
+                    try {
+                        let chatHistory = [];
+                        chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                        const payload = { contents: chatHistory };
+                        const apiKey = "";
+                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        const result = await response.json();
+
+                        if (result.candidates && result.candidates.length > 0 &&
+                            result.candidates[0].content && result.candidates[0].content.parts &&
+                            result.candidates[0].content.parts.length > 0) {
+                            const text = result.candidates[0].content.parts[0].text;
+                            aiResponseAreaResume.innerHTML = `<p>${text}</p>`;
+                        } else {
+                            aiResponseAreaResume.innerHTML = '<p class="text-red-500">Could not get a response from AI. Please try again.</p>';
+                        }
+                    } catch (error) {
+                        console.error("Error with AI Resume Q&A demo:", error);
+                        aiResponseAreaResume.innerHTML = '<p class="text-red-500">Failed to get response due to a network or API error.</p>';
+                    } finally {
+                        aiLoadingSpinnerResume.classList.add('hidden');
+                        generateResponseBtnResume.disabled = false;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
