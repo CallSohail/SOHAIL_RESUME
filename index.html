@@ -3,1132 +3,1543 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Sohail - Data Scientist & AI/ML Engineer</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Muhammad Sohail - AI-Powered Data Scientist Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Font for Name (as per image example) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-
     <style>
+        /* Custom CSS for particles and overall theme */
         :root {
-            /* Light Mode Defaults */
-            --bg-page: #f8f9fa;
-            --bg-card: #ffffff;
-            --bg-header-right-col: transparent; /* Transparent background for headshot column */
-            --text-base: #212529;
-            --text-primary-section: #212529; /* For Name, Item titles */
-            --text-secondary: #495057; /* For Dynamic Title, Subheadings */
-            --text-light: #6c757d;      /* For Duration/Location */
-            --text-body: #343a40;       /* For main body paragraphs and list items */
-            --text-link: #00796b;
-            --text-link-hover: #004d40;
-            --border-main: #e9ecef;
-            --border-section: #dee2e6;
-            --border-header-line: #00796b; /* For main section headers */
-            --border-item-dashed: #e0e0e0;
-            --shadow-main: 0 8px 20px rgba(0, 0, 0, 0.08);
-            --shadow-item: 0 2px 5px rgba(0,0,0,0.05);
-            --ai-card-bg: #f8f8f8;
-            --ai-input-border: #ccc;
-            --ai-response-bg: #e6f7ff;
-            --ai-response-border: #b0e0e6;
-            --btn-summarize-bg: #2563eb;
-            --btn-summarize-hover-bg: #1d4ed8;
-            --btn-summarize-text: white;
-            --project-link-btn-bg: #e6f7ff;
-            --project-link-btn-border: #b0e0e6;
-            --key-skill-tag-bg: #e6f7ff;
-            --key-skill-tag-text: #00796b;
-            --key-skill-tag-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            --key-skill-tag-hover-bg: #d1efff; /* Added for hover state */
-            --icon-color: #00796b;
-            --header-name-color: #212529; /* Specific for Playfair Display name */
-            --header-contact-icon: #00796b; /* Specific for header contact icons */
-        }
-
-        :root.dark-mode {
-            /* Dark Mode Overrides */
-            --bg-page: #1a202c;
-            --bg-card: #2d3748;
-            --bg-header-right-col: transparent; /* Keep transparent in dark mode */
-            --text-base: #edf2f7;
-            --text-primary-section: #edf2f7;
-            --text-secondary: #cbd5e0;
-            --text-light: #a0aec0;
-            --text-body: #a0aec0;
-            --text-link: #63b3ed;
-            --text-link-hover: #3182ce;
-            --border-main: #4a5568;
-            --border-section: #4a5568;
-            --border-header-line: #63b3ed;
-            --border-item-dashed: #4a5568;
-            --shadow-main: 0 8px 20px rgba(0, 0, 0, 0.4);
-            --shadow-item: 0 2px 5px rgba(0,0,0,0.2);
-            --ai-card-bg: #2d3748;
-            --ai-input-border: #63b3ed;
-            --ai-response-bg: #4a5568;
-            --ai-response-border: #63b3ed;
-            --btn-summarize-bg: #3182ce;
-            --btn-summarize-hover-bg: #2b6cb0;
-            --btn-summarize-text: white;
-            --project-link-btn-bg: #4a5568;
-            --project-link-btn-border: #63b3ed;
-            --key-skill-tag-bg: #4a5568;
-            --key-skill-tag-text: #bee3f8;
-            --key-skill-tag-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-            --key-skill-tag-hover-bg: #2b6cb0; /* Adjusted for dark mode */
-            --icon-color: #63b3ed;
-            --header-name-color: #edf2f7;
-            --header-contact-icon: #63b3ed;
+            --midnight-blue: #1A202C;
+            --white: #FFFFFF;
+            --neon-green: #38B2AC; /* Teal-like neon green */
+            --light-bg: #f7fafc;
+            --light-text: #2d3748;
+            --light-accent: #3182CE;
+            --dark-card-bg: #2D3748; /* Slightly darker grey for project cards in dark mode */
+            --dark-border: rgba(255, 255, 255, 0.15); /* Slightly more visible border in dark mode */
+            --light-border: rgba(0, 0, 0, 0.15); /* Slightly more visible border in light mode */
+            --dark-text-secondary: #CBD5E0; /* Lighter grey for secondary text in dark mode */
+            --light-text-secondary: #4A5568; /* Darker grey for secondary text in light mode */
         }
 
         body {
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-            background-color: var(--bg-page);
-            color: var(--text-base);
-            line-height: 1.6;
-            scroll-behavior: smooth;
-        }
-        .resume-container {
-            max-width: 850px;
-            margin: 2.5rem auto;
-            background-color: var(--bg-card);
-            box-shadow: var(--shadow-main);
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--border-main);
-            position: relative; /* For theme toggle absolute positioning */
-        }
-        /* Theme Toggle Button */
-        #themeToggle {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            z-index: 10;
-            background-color: var(--bg-page);
-            color: var(--text-base);
-            border: 1px solid var(--border-main);
-            padding: 0.5rem;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        #themeToggle:hover {
-            background-color: var(--border-main);
-            color: var(--text-link);
-        }
-        #themeToggle i {
-            transition: opacity 0.3s ease;
-        }
-        #themeToggle .fa-moon.hidden, #themeToggle .fa-sun.hidden {
-            opacity: 0;
-        }
-        #themeToggle .fa-moon, #themeToggle .fa-sun {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--midnight-blue);
+            color: var(--white);
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
         }
 
-
-        .header-section-custom {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            min-height: 350px;
-            /* No direct gradient here, columns will define backgrounds */
-        }
-        @media (min-width: 768px) {
-            .header-section-custom {
-                flex-direction: row;
-                text-align: left;
-                min-height: 350px;
-            }
+        body.light-mode {
+            background-color: var(--light-bg);
+            color: var(--light-text);
         }
 
-        .header-left-col {
-            flex: 1;
-            padding: 3rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center; /* Center content on small screens */
-            height: 100%;
-            background-color: var(--bg-card); /* White background for text side */
-        }
-        @media (min-width: 768px) {
-            .header-left-col {
-                align-items: flex-start;
-            }
+        .section-title {
+            font-family: 'Roboto Mono', monospace;
+            color: var(--neon-green);
+            text-shadow: 0 0 5px var(--neon-green);
         }
 
-        .header-right-col {
-            flex: 1;
-            background-color: var(--bg-header-right-col); /* Transparent in light mode, matches bg-card in dark */
-            padding: 2rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-        }
-        @media (max-width: 767px) {
-            .header-right-col {
-                width: 100%;
-                order: -1;
-                min-height: 250px;
-            }
+        .dark-mode .section-title {
+             text-shadow: 0 0 8px var(--neon-green);
         }
 
-        .header-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: var(--header-name-color);
-            margin-bottom: 0.5rem;
-            line-height: 1.1;
-        }
-
-        .header-title-dynamic {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem; /* Reduced margin to bring icons closer */
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-        }
-
-        /* Adjusted styles for the new social icons layout */
-        .social-icons-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center; /* Center icons on small screens */
-            gap: 1.5rem; /* Space between icons */
-            margin-bottom: 1.5rem; /* Space below icons */
-        }
-        @media (min-width: 768px) {
-            .social-icons-container {
-                justify-content: flex-start; /* Align left on larger screens */
-            }
-        }
-        .social-icon-item {
-            display: flex; /* Keep it flex for vertical centering of icon */
-            align-items: center; /* Center icon vertically with text/link */
-            text-decoration: none;
-            color: var(--text-secondary); /* Social icon link text color */
-            transition: color 0.2s ease;
-        }
-        .social-icon-item:hover {
-            color: var(--text-link-hover);
-        }
-        .social-icon-item i {
-            font-size: 1.8rem;
-            color: var(--header-contact-icon); /* Specific icon color for header */
-            margin-right: 0; /* Ensure no text is present */
-        }
-
-        .headshot-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 4px;
-            object-fit: cover;
-            /* Removed box-shadow and border to match image style */
-        }
-
-        .download-cv-link {
-            display: inline-flex;
-            align-items: center;
-            font-size: 1rem;
-            color: var(--text-base); /* Black color for text link */
-            text-decoration: none;
-            margin-top: 1.5rem;
-            transition: color 0.2s ease;
-            padding: 0.75rem 1.5rem; /* Add padding to make it look like a button */
-            border: 1px solid var(--border-main); /* Add a border */
-            border-radius: 8px; /* Slightly rounded corners for button look */
-            background-color: var(--bg-page); /* Match page background */
-            box-shadow: var(--shadow-item); /* Add a subtle shadow */
-        }
-        .download-cv-link:hover {
-            color: var(--text-link-hover);
-            text-decoration: none;
-            background-color: var(--border-main); /* Change background on hover */
-        }
-        .download-cv-link i {
-            margin-left: 0.5rem;
-        }
-
-        /* General sections below header */
-        .main-content-padding {
-            padding: 3rem;
-        }
-        .section-header {
-            color: var(--text-link);
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 2px solid var(--border-header-line);
-            text-align: left;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .profile-text, .description-list li, .skill-list li, .ai-demo-card p {
-            color: var(--text-body);
-        }
-        .experience-item, .education-item, .project-item, .skill-category-card, .certification-item, .extracurricular-item, .interest-item {
-            margin-bottom: 1.75rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px dashed var(--border-item-dashed);
-        }
-        .experience-item:last-child, .education-item:last-child, .project-item:last-child, .skill-category-card:last-child, .certification-item:last-child, .extracurricular-item:last-child, .interest-item:last-child {
-            border-bottom: none;
-        }
-        .item-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-primary-section);
-            margin-bottom: 0.35rem;
-        }
-        .item-subheading {
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            margin-bottom: 0.35rem;
-        }
-        .item-duration-location {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-bottom: 1rem;
-        }
-        .description-list li {
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            color: var(--text-body);
-        }
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
-        .skill-list ul {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0.4rem;
-        }
-        @media (min-width: 640px) {
-            .skill-list ul.two-col {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (min-width: 768px) {
-            .skill-list ul.three-col {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        .skill-list li {
-            margin-bottom: 0.4rem;
-            font-size: 0.95rem;
-            color: var(--text-body);
-            display: flex;
-            align-items: center;
-        }
-        .skill-list li i {
-            margin-right: 0.6rem;
-            color: var(--icon-color);
-        }
-        .key-skills-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-top: 1rem;
-            justify-content: center;
-        }
-        .key-skill-tag {
-            background-color: var(--key-skill-tag-bg);
-            color: var(--key-skill-tag-text);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            box-shadow: var(--key-skill-tag-shadow);
-            transition: transform 0.2s ease, background-color 0.2s ease;
-            cursor: default;
-        }
-        .key-skill-tag:hover {
-            transform: translateY(-2px);
-            background-color: var(--key-skill-tag-hover-bg);
-        }
-        a {
-            color: var(--text-link);
-            text-decoration: none;
-            transition: color 0.3s ease, text-decoration 0.3s ease;
-        }
-        a:hover {
-            color: var(--text-link-hover);
-            text-decoration: underline;
-        }
-        .footer {
-            text-align: center;
-            padding: 1.8rem;
-            margin-top: 3rem;
-            background-color: var(--bg-card);
-            color: var(--text-light);
-            font-size: 0.9rem;
-            border-radius: 0 0 8px 8px;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-            border-top: 1px solid var(--border-main);
-        }
-        .typing-text::after {
-            content: '|';
-            animation: blink-caret .75s step-end infinite;
-            border-color: currentColor; /* Inherits color from parent */
-        }
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: currentColor }
-        }
-        /* Modal styles and AI Demo styles */
-        .modal-overlay {
+        /* Particle Background */
+        .particle-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
+            z-index: -1;
+            opacity: 0.2;
         }
-        .modal-content {
-            background-color: var(--bg-card);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow-main);
-            width: 90%;
-            max-width: 600px;
+
+        /* Hero Section Animation */
+        .animated-subtitle span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideIn 0.5s forwards;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Timeline styles */
+        .timeline-item {
             position: relative;
-            max-height: 80vh;
-            overflow-y: auto;
+            padding-left: 30px;
+            margin-bottom: 40px;
         }
-        .modal-close-button {
+        .timeline-item::before {
+            content: '';
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
+            left: 0;
+            top: 6px;
+            width: 15px;
+            height: 15px;
+            background: var(--neon-green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--neon-green);
+            z-index: 1;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 15px;
+            bottom: -40px; /* Extend line down */
+            width: 3px;
+            background: var(--neon-green);
+        }
+        .timeline-item:last-child::after {
+            bottom: auto; /* Stop line at the last item */
+            height: calc(100% - 15px);
+        }
+        .dark-mode .timeline-item::before {
+            box-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green);
+        }
+
+        /* Project Card Hover Effect */
+        .project-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            background-color: var(--dark-card-bg);
+            border: 1px solid var(--dark-border);
+        }
+        .light-mode .project-card {
+            background-color: #e2e8f0;
+            border: 1px solid var(--light-border);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .dark-mode .project-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 15px var(--neon-green);
+        }
+        .light-mode .project-card:hover {
+             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Skill Badges */
+        .skill-badge {
+            display: inline-block;
+            background-color: var(--neon-green);
+            color: var(--midnight-blue);
+            padding: 8px 16px;
+            border-radius: 9999px;
+            margin: 5px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9em;
+            opacity: 0;
+            animation: fadeInScale 0.5s forwards;
+            box-shadow: 0 0 8px rgba(56, 178, 172, 0.5); /* Neon glow */
+        }
+        .project-card .bg-gray-700 { /* For project card tags */
+            background-color: var(--midnight-blue); /* Darker tags in dark mode */
+            color: var(--dark-text-secondary);
+        }
+        .light-mode .project-card .bg-gray-700 {
+            background-color: #CBD5E0; /* Lighter tags in light mode */
+            color: var(--light-text-secondary);
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Floating Chatbot & Resume Matcher */
+        .floating-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--neon-green);
+            color: var(--midnight-blue);
+            padding: 15px 20px;
+            border-radius: 9999px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             cursor: pointer;
-            color: var(--text-base);
+            z-index: 1000;
+            transition: background-color 0.3s;
         }
+
+        .floating-button:hover {
+            background-color: #2c9a94;
+        }
+
+        .chatbot-modal, .resume-matcher-modal, .cold-email-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--midnight-blue);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            z-index: 1001;
+            max-width: 90%;
+            width: 500px;
+            max-height: 80%;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid var(--neon-green); /* Neon border */
+        }
+        .light-mode .chatbot-modal, .light-mode .resume-matcher-modal, .light-mode .cold-email-modal {
+            background-color: var(--light-bg);
+            border: 1px solid var(--light-accent);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: rgba(56, 178, 172, 0.1); /* Subtle neon header */
+            border-bottom: 1px solid rgba(56, 178, 172, 0.3);
+            color: var(--white); /* Ensure header text is visible */
+        }
+        .light-mode .modal-header {
+            background-color: rgba(49, 130, 206, 0.1);
+            border-bottom: 1px solid rgba(49, 130, 206, 0.3);
+            color: var(--light-text);
+        }
+
         .modal-body {
-            margin-top: 1rem;
-            white-space: pre-wrap;
-            color: var(--text-body);
+            padding: 20px;
+            overflow-y: auto;
+            flex-grow: 1;
+            color: var(--white); /* Ensure body text is visible */
         }
-        .ai-demo-card {
-            background-color: var(--ai-card-bg);
-            padding: 1.5rem;
+        .light-mode .modal-body {
+            color: var(--light-text);
+        }
+
+        .chat-messages {
+            min-height: 150px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+            border: 1px solid var(--dark-border);
             border-radius: 8px;
-            border: 1px solid var(--border-item-dashed);
-            box-shadow: var(--shadow-item);
-            margin-top: 1.5rem;
+            margin-bottom: 15px;
+        }
+        .light-mode .chat-messages {
+            border: 1px solid var(--light-border);
+        }
+
+        .chat-message {
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 12px;
+            max-width: 80%;
+        }
+
+        .chat-message.user {
+            background-color: var(--neon-green);
+            color: var(--midnight-blue);
+            align-self: flex-end;
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .chat-message.ai {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            align-self: flex-start;
+            margin-right: auto;
             text-align: left;
         }
-        .ai-demo-input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--ai-input-border);
-            border-radius: 6px;
-            margin-bottom: 1rem;
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-            background-color: var(--bg-card); /* Ensure input background changes */
-            color: var(--text-base); /* Ensure input text color changes */
+        .light-mode .chat-message.ai {
+            background-color: rgba(0, 0, 0, 0.05);
+            color: var(--light-text);
         }
-        .ai-demo-button {
-            background-color: var(--text-link);
-            color: var(--btn-summarize-text);
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
+
+        .chat-input-container {
+            display: flex;
+            padding-top: 15px;
+            border-top: 1px solid rgba(56, 178, 172, 0.3);
+        }
+        .light-mode .chat-input-container {
+             border-top: 1px solid rgba(49, 130, 206, 0.3);
+        }
+
+        .chat-input-container input, .chat-input-container textarea {
+            flex-grow: 1;
+            padding: 10px 15px;
+            border-radius: 20px;
+            border: 1px solid var(--dark-border);
+            background-color: rgba(0, 0, 0, 0.1);
+            color: var(--white);
+        }
+        .light-mode .chat-input-container input, .light-mode .chat-input-container textarea {
+            border: 1px solid var(--light-border);
+            background-color: rgba(255, 255, 255, 0.7);
+            color: var(--light-text);
+        }
+
+        /* Placeholder styling for inputs and textareas */
+        .chat-input-container input::placeholder,
+        .chat-input-container textarea::placeholder,
+        .job-description-input::placeholder {
+            color: rgba(255, 255, 255, 0.5); /* Lighter placeholder for dark mode */
+        }
+        .light-mode .chat-input-container input::placeholder,
+        .light-mode .chat-input-container textarea::placeholder,
+        .light-mode .job-description-input::placeholder {
+            color: rgba(0, 0, 0, 0.5); /* Darker placeholder for light mode */
+        }
+
+
+        .chat-input-container button {
+            background-color: var(--neon-green);
+            color: var(--midnight-blue);
+            padding: 10px 15px;
+            border-radius: 20px;
+            margin-left: 10px;
             cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .chat-input-container button:hover {
+            background-color: #2c9a94;
+        }
+
+        .job-description-input {
             width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 150px;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid var(--dark-border);
+            background-color: rgba(0, 0, 0, 0.1);
+            color: var(--white);
+            resize: vertical;
         }
-        .ai-demo-button:hover {
-            background-color: var(--text-link-hover);
+        .light-mode .job-description-input {
+            border: 1px solid var(--light-border);
+            background-color: rgba(255, 255, 255, 0.7);
+            color: var(--light-text);
         }
-        .ai-response-area {
-            background-color: var(--ai-response-bg);
-            border: 1px solid var(--ai-response-border);
-            padding: 1rem;
-            border-radius: 6px;
-            margin-top: 1rem;
-            min-height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-body);
-            font-size: 0.95rem;
-            line-height: 1.5;
-            white-space: pre-wrap;
+
+        .match-results {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: rgba(56, 178, 172, 0.1);
+            border: 1px solid rgba(56, 178, 172, 0.3);
         }
-        .ai-response-area p {
-            margin: 0;
+        .light-mode .match-results {
+            background-color: rgba(49, 130, 206, 0.1);
+            border: 1px solid rgba(49, 130, 206, 0.3);
         }
-        .project-link-btn {
-            display: inline-flex;
-            align-items: center;
-            background-color: var(--project-link-btn-bg);
-            color: var(--text-link);
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 0.85rem;
-            margin-top: 0.5rem;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            border: 1px solid var(--project-link-btn-border);
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .chatbot-modal, .resume-matcher-modal, .cold-email-modal {
+                width: 95%;
+                max-width: none;
+            }
+            .floating-button {
+                bottom: 10px;
+                right: 10px;
+                padding: 12px 18px;
+                font-size: 0.9em;
+            }
         }
-        .project-link-btn:hover {
-            background-color: var(--key-skill-tag-hover-bg); /* Reuse hover color from key tags */
-            color: var(--text-link-hover);
-            text-decoration: none;
+        .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid var(--neon-green);
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-left: 10px;
         }
-        .project-link-btn i {
-            margin-right: 0.5rem;
+        .light-mode .loading-spinner {
+            border-color: rgba(0, 0, 0, 0.3);
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Easter Egg Modal */
+        .easter-egg-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--midnight-blue);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            z-index: 1002;
+            padding: 30px;
+            max-width: 400px;
+            text-align: center;
+            display: none;
+            border: 1px solid var(--neon-green);
+        }
+        .light-mode .easter-egg-modal {
+            background-color: var(--light-bg);
+            border: 1px solid var(--light-accent);
         }
     </style>
 </head>
-<body class="p-4 sm:p-6 md:p-8 lg:p-10">
-    <div class="resume-container">
-        <!-- Theme Toggle Button -->
-        <button id="themeToggle" class="p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <i class="fas fa-moon hidden dark:inline text-xl"></i>
-            <i class="fas fa-sun inline text-xl"></i>
-        </button>
+<body class="dark-mode">
+    <!-- Particle Background Canvas -->
+    <canvas id="particle-canvas" class="particle-canvas"></canvas>
 
-        <!-- Header Section (Custom Design) -->
-        <header class="header-section-custom">
-            <div class="header-left-col">
-                <h1 class="header-name">Muhammad Sohail</h1>
-                <p class="header-title-dynamic">
-                    <span id="dynamic-title" class="typing-text"></span>
-                </p>
-                <!-- Updated Social/Contact Icons to be in one line -->
-                <div class="social-icons-container flex-row">
-                    <a href="mailto:muhammad.sohail@telecom-sud-paris.eu" class="social-icon-item" target="_blank" rel="noopener noreferrer">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                    <a href="https://github.com/CallSohail" class="social-icon-item" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/muhammadsohail951" class="social-icon-item" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://www.facebook.com/CallSohail21" class="social-icon-item" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <a href="https://www.instagram.com/callsohail_/" class="social-icon-item" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </div>
-                <!-- Download CV Button -->
-                <a href="https://drive.google.com/uc?export=download&id=1OxmD0QWmGYYe4H7ExnykNhqJviGBDFSu" target="_blank" rel="noopener noreferrer" class="download-cv-link">
-                    Download CV <i class="fas fa-arrow-down ml-2"></i>
-                </a>
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" class="fixed top-4 right-4 z-50 p-3 rounded-full bg-gray-700 text-white shadow-lg transition-colors duration-300">
+        <i class="fas fa-sun" id="theme-icon"></i>
+    </button>
+
+    <!-- Chatbot Floating Button -->
+    <button id="chatbot-float-btn" class="floating-button flex items-center space-x-2">
+        <i class="fas fa-comment-dots"></i>
+        <span>Chat with My Resume</span>
+    </button>
+
+    <!-- Resume Matcher Floating Button (initially hidden, triggered by scroll/CTA) -->
+    <button id="resume-matcher-float-btn" class="floating-button right-auto left-20 hidden flex items-center space-x-2">
+        <i class="fas fa-clipboard-check"></i>
+        <span>Resume Matcher</span>
+    </button>
+
+    <!-- Chatbot Modal -->
+    <div id="chatbot-modal" class="chatbot-modal">
+        <div class="modal-header">
+            <h3 class="text-xl font-bold">AI Chatbot</h3>
+            <button class="close-modal text-gray-400 hover:text-white text-2xl">&times;</button>
+        </div>
+        <div class="modal-body flex flex-col h-full">
+            <div id="chat-messages" class="chat-messages flex flex-col space-y-3">
+                <div class="chat-message ai">Hello! I'm Muhammad's AI assistant. Ask me anything about his resume!</div>
             </div>
-            <div class="header-right-col">
-                <!-- Replaced with your actual headshot image and removed color/border styling -->
-                <img src="https://i.ibb.co/84BZsFhc/1729600793626.jpg" alt="Muhammad Sohail Headshot" class="headshot-image">
-            </div>
-        </header>
-
-        <!-- Main Content Area -->
-        <div class="main-content-padding">
-            <!-- Profile Section -->
-            <section id="profile" class="mb-8">
-                <h2 class="section-header">
-                    Profile
-                    <button class="summarize-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded text-sm transition duration-300 ease-in-out flex items-center" data-section-id="profile">
-                        Summarize ✨
-                    </button>
-                </h2>
-                <p class="profile-text">
-                    I am an AI & Data Science intern deeply interested in NLP and chatbot development. Currently pursuing my Master's at Telecom SudParis, I bring six months of experience as a Data Analyst intern and nearly three years of freelancing in data science and machine learning.
-                    <br><br>
-                    My expertise lies in developing intelligent HR chatbots using Large Language Models (LLMs) and Retrieval-Augmented Generation (RAG) to enhance HR automation. I am proficient in Machine Learning & AI (Keras, PyTorch, Transformers), NLP & Chatbots (SpaCy, NLTK, LLMs), and Data Science & Analytics (Python, SQL, Pandas, Matplotlib).
-                    <br><br>
-                    I am passionate about using AI to create practical, data-driven solutions and am always open to new opportunities and collaborations.
-                </p>
-            </section>
-
-            <!-- Key Skills Section -->
-            <section id="key-skills" class="mb-8">
-                <h2 class="section-header">
-                    Key Skills
-                    <button class="summarize-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded text-sm transition duration-300 ease-in-out flex items-center" data-section-id="key-skills">
-                        Summarize ✨
-                    </button>
-                </h2>
-                <div class="key-skills-tags">
-                    <span class="key-skill-tag">Large Language Models (LLMs)</span>
-                    <span class="key-skill-tag">Retrieval-Augmented Generation (RAG)</span>
-                    <span class="key-skill-tag">Natural Language Processing (NLP)</span>
-                    <span class="key-skill-tag">Deep Learning</span>
-                    <span class="key-skill-tag">Machine Learning</span>
-                    <span class="key-skill-tag">Python</span>
-                    <span class="key-skill-tag">Data Analysis & Visualization</span>
-                    <span class="key-skill-tag">IoT Systems</span>
-                    <span class="key-skill-tag">Predictive Analytics</span>
-                    <span class="key-skill-tag">Chatbot Development</span>
-                </div>
-            </section>
-
-            <!-- Interactive AI Resume Q&A Section -->
-            <section id="ai-interactive-tool" class="mb-8">
-                <h2 class="section-header">
-                    Ask Me Anything (AI Q&A)
-                    <button class="summarize-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded text-sm transition duration-300 ease-in-out flex items-center" data-section-id="ai-interactive-tool">
-                        Summarize ✨
-                    </button>
-                </h2>
-                <div class="ai-demo-card w-full">
-                    <p class="text-gray-700 mb-4">Curious about my resume? Ask me a question! This AI can answer based on all the information provided in my resume. For example, "What is Sohail's educational background?" or "Tell me more about the HR Chatbot project."</p>
-                    <input type="text" id="aiPromptInputResume" class="ai-demo-input" placeholder="Ask a question about my resume...">
-                    <button id="generateResponseBtnResume" class="ai-demo-button flex items-center justify-center">
-                        Get AI Answer
-                        <i id="aiLoadingSpinnerResume" class="fas fa-spinner fa-spin ml-2 hidden"></i>
-                    </button>
-                    <div id="aiResponseAreaResume" class="ai-response-area mt-4">
-                        <p>AI's answer will appear here.</p>
-                    </div>
-                </div>
-            </section>
-
-
-            <!-- Professional Experience Section -->
-            <section id="experience" class="mb-8">
-                <h2 class="section-header">
-                    Professional Experience
-                    <button class="summarize-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded text-sm transition duration-300 ease-in-out flex items-center" data-section-id="experience">
-                        Summarize ✨
-                    </button>
-                </h2>
-                <div class="space-y-6">
-                    <!-- Data Science Intern - Université Paris-Saclay -->
-                    <div class="experience-item">
-                        <div class="flex justify-between items-baseline mb-1">
-                            <h3 class="item-title">Data Science Intern</h3>
-                            <span class="item-duration-location">March 2025 - Present | Evry, Île-de-France, France</span>
-                        </div>
-                        <p class="item-subheading">Université Paris-Saclay</p>
-                        <ul class="list-disc pl-5 text-gray-700 description-list">
-                            <li>Designing and developing an intelligent HR chatbot prototype to automate staff inquiries on recruitment, training, leave policies, and regulatory compliance.</li>
-                            <li>Integrating Large Language Models (LLMs) via APIs and Retrieval-Augmented Generation (RAG) systems to enhance response accuracy using the university's internal databases.</li>
-                            <li>Implementing validation mechanisms to ensure compliance and prevent incorrect/inappropriate responses.</li>
-                            <li>Building a user-friendly interface for seamless staff interaction and deploying the platform within the university's data center.</li>
-                            <li>Innovating advanced solutions, including fine-tuning open-source models to align with institutional policies and optimizing response filtering.</li>
-                            <li>Collaborating with engineers to align technical architecture with organizational needs and HR workflows.</li>
-                        </ul>
-                    </div>
-                    <!-- Data Analyst Intern - Code Clause Pvt Ltd. -->
-                    <div class="experience-item">
-                        <div class="flex justify-between items-baseline mb-1">
-                            <h3 class="item-title">Data Analyst Intern</h3>
-                            <span class="item-duration-location">September 2023 - April 2024 | Pune, Maharashtra, India</span>
-                        </div>
-                        <p class="item-subheading">CodeClause</p>
-                        <ul class="list-disc pl-5 text-gray-700 description-list">
-                            <li>Developed predictive machine learning models, improving data-driven decision-making by 30%.</li>
-                            <li>Analyzed large datasets to extract key business insights, reducing manual processing time by 40%.</li>
-                            <li>Automated data pipelines using Python, Pandas, and SQL, reducing data processing time by 25%.</li>
-                            <li>Designed and implemented interactive data visualizations using Matplotlib and Seaborn, enhancing reporting clarity.</li>
-                            <li>Technologies Used: Python, Pandas, SQL, Scikit-learn, Matplotlib, Seaborn, Jupyter Notebook.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Extracurricular Activities Section -->
-            <section id="extracurricular-activities" class="mb-8">
-                <h2 class="section-header">
-                    Extracurricular Activities
-                    <button class="summarize-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded text-sm transition duration-300 ease-in-out flex items-center" data-section-id="extracurricular-activities">
-                        Summarize ✨
-                    </button>
-                </h2>
-                <div class="space-y-6">
-                    <div class="extracurricular-item">
-                        <div class="flex justify-between items-baseline mb-1">
-                            <h3 class="item-title">Campus Ambassador</h3>
-                            <span class="item-duration-location">August 2021 - December 2022 (1 year 5 months) | Connected Pakistan</span>
-                        </div>
-                        <p class="item-subheading">Connected Pakistan</p>
-                        <ul class="list-disc pl-5 text-gray-700 description-list">
-                            <li>Served as the university ambassador for Connected Pakistan, bridging students with conferences, workshops, and skill-building events to foster professional growth.</li>
-                            <li>Coordinated and promoted 10+ events on campus, driving participation from 150+ students and enhancing their technical and career-oriented skills.</li>
-                            <li>Collaborated with event organizers to tailor content to student interests, emphasizing data science, AI, and networking opportunities.</li>
-                            <li>Leveraged social media platforms and campus networks to amplify event visibility, increasing student engagement by 40% during my tenure.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Research Projects Section -->
-            <section id="research-projects" class="mb-8">
-                <h2 class="section-header">
-                    Research Projects
-                    <button class="summarize-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded text-sm transition duration-300 ease-in-out flex items-center" data-section-id="research-projects">
-                        Summarize ✨
-                    </button>
-                </h2>
-                <div class="space-y-6">
-                    <!-- Bridging the Gap in Text-Based Emotion Detection -->
-                    <div class="project-item">
-                        <div class="flex justify-between items-baseline mb-1">
-                            <h3 class="item-title flex items-center"><i class="fas fa-robot mr-3 text-lg"></i> Bridging the Gap in Text-Based Emotion Detection</h3>
-                            <span class="item-duration-location">October 2024 - Present | Institut Polytechnique de Paris</span>
-                        </div>
-                        <p class="item-subheading">Detecting perceived emotions in text for cross-lingual analysis.</p>
-                        <ul class="list-disc pl-5 text-gray-700 description-list">
-                            <li>This task focuses on detecting perceived emotions in text, including predicting emotions (joy, sadness, fear, anger, surprise, disgust), estimating emotion intensity, and cross-lingual emotion detection.</li>
-                            <li>The dataset covers a variety of languages, highlighting the complexity of interpreting emotions across cultures.</li>
-                            <li>Skills: Deep Learning, TensorFlow, Keras, PyTorch, Natural Language Processing: NLTK, SpaCy, Transformers, Data Processing: Pandas, NumPy, Visualization: Matplotlib, Seaborn, Deployment: Streamlit.</li>
-                        </ul>
-                    </div>
-                    <!-- Dynamic Cooling System in Data Centers Using IoT & LSTM -->
-                    <div class="project-item">
-                        <div class="flex justify-between items-baseline mb-1">
-                            <h3 class="item-title flex items-center"><i class="fas fa-server mr-3 text-lg"></i> Dynamic Cooling System in Data Centers Using IoT & LSTM</h3>
-                            <span class="item-duration-location">Master's Program Project | Institut Polytechnique de Paris</span>
-                        </div>
-                        <p class="item-subheading">Optimizing energy consumption in data centers with IoT and AI.</p>
-                        <ul class="list-disc pl-5 text-gray-700 description-list">
-                            <li>Developed a dynamic cooling system for data centers combining air and liquid cooling, adjusting in real time based on sensor data.</li>
-                            <li>IoT sensors collect temperature, humidity, and energy data; an LSTM neural network processes this information to predict cooling needs.</li>
-                            <li>Benefits: Optimizes energy consumption, reducing carbon footprint, and enhances system reliability and equipment lifespan.</li>
-                            <li>This project features a robust, multi-tier architecture with data collection, edge processing, central decision-making, and actuator control.</li>
-                            <li>Completed as part of my Master’s program at Telecom SudParis, it showcases my ability to integrate predictive analytics and smart systems to drive energy efficiency.</li>
-                            <li>Skills: IoT Sensor Networks, LSTM Neural Networks, Predictive Analytics, System Architecture, Energy Efficiency.</li>
-                        </ul>
-                        <a href="https://drive.google.com/uc?export=download&id=19cPWPWUFmizD4H7woCS7pQ2Xb_430EDupi" target="_blank" rel="noopener noreferrer" class="project-link-btn"><i class="fas fa-external-link-alt"></i> View Project</a>
-                    </div>
-                    <!-- MediBot Chatbot -->
-                    <div class="project-item">
-                        <div class="flex justify-between items-baseline mb-1">
-                            <h3 class="item-title flex items-center"><i class="fas fa-comments mr-3 text-lg"></i> MediBot Chatbot</h3>
-                            <span class="item-duration-location">Duration: 2 Months</span>
-                        </div>
-                        <p class="item-subheading">AI-powered medical assistant for trusted health information.</p>
-                        <ul class="list-disc pl-5 text-gray-700 description-list">
-                            <li>MediBot Chatbot is an AI-powered medical assistant that answers questions using trusted medical information, pulling data from The GALE Encyclopedia of Medicine (Second Edition) and returning answers based strictly on that context.</li>
-                            <li>The chatbot is built with Python and uses modern tools like LangChain to manage the conversation flow, FAISS for fast information retrieval, and Hugging Face’s Mistral-7B as the language model.</li>
-                            <li>The user interface is built with Streamlit, making it simple and user-friendly, and the project is deployed for free on Hugging Face Spaces.</li>
-                            <li>This project helped me learn how to integrate different AI technologies and improve prompt engineering so that the answers remain accurate and context-based.</li>
-                            <li>Skills: Python, Deployment: Streamlit, LangChain, FAISS, Hugging Face.</li>
-                        </ul>
-                        <a href="https://huggingface.co/spaces/msohail21/medibot-chatbot" target="_blank" rel="noopener noreferrer" class="project-link-btn"><i class="fas fa-external-link-alt"></i> View Project</a>
-                    </div>
-                    <!-- Basic Image Classification with Tensorflow -->
-                    <div class="project-item">
-                        <div class="flex justify-between items-baseline mb-1">
-                            <h3 class="item-title flex items-center"><i class="fas fa-image mr-3 text-lg"></i> Basic Image Classification with Tensorflow</h3>
-                            <span class="item-duration-location">July 2022 - August 2022</span>
-                        </div>
-                        <p class="item-subheading">Simple image classifier using TensorFlow and CNN.</p>
-                        <ul class="list-disc pl-5 text-gray-700 description-list">
-                            <li>Built a simple image classifier using TensorFlow; the model distinguishes between image categories using a convolutional neural network (CNN).</li>
-                            <li>Preprocessed image data—resizing, normalizing, and augmenting to boost performance.</li>
-                            <li>The CNN, built with TensorFlow’s Keras API, learned to identify key features in images; techniques like dropout and pooling were used to improve accuracy and reduce overfitting.</li>
-                            <li>This project sharpened skills in deep learning, model evaluation, tuning hyperparameters, and troubleshooting model performance.</li>
-                            <li>Skills: TensorFlow, Keras, Convolutional Neural Networks (CNN), Python, Data Processing: Pandas, NumPy, Model Tuning.</li>
-                        </ul>
-                        <a href="https://github.com/CallSohail/Basic-Image-Classification-With-Tensorflow" target="_blank" rel="noopener noreferrer" class="project-link-btn"><i class="fas fa-external-link-alt"></i> View Project</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Education Section -->
-            <section id="education" class="mb-8">
-                <h2 class="section-header">
-                    Education
-                    <button class="summarize-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded text-sm transition duration-300 ease-in-out flex items-center" data-section-id="education">
-                        Summarize ✨
-                    </button>
-                </h2>
-                <div class="space-y-6">
-                    <!-- MSc M2 in Data Science -->
-                    <div class="education-item">
-                        <div class="flex justify-between items-baseline mb-1">
-                            <h3 class="item-title">Master's degree, Data Science for Network Intelligence</h3>
-                            <span class="item-duration-location">September 2024 - September 2025 | Institut Polytechnique de Paris / Télécom SudParis, France</span>
-                        </div>
-                        <p class="item-subheading">Institut Polytechnique de Paris / Télécom SudParis</p>
-                        <ul class="list-disc pl-5 text-gray-700 description-list">
-                            <li>Current GPA: 15.81.</li>
-                            <li>Focused coursework includes: Advanced Data Science, Data Visualization Techniques, Deep Learning Architectures, Blockchain Technologies, Network Intelligence, Internet of Things (IoT) Applications, Distributed Networking Systems, and Business Modelling for Data-Driven Solutions.</li>
-                        </ul>
-                    </div>
-                    <!-- Bachelor of Computer Science -->
-                    <div class="education-item">
-                        <div class="flex justify-between items-baseline mb-1">
-                            <h3 class="item-title">Bachelor's degree, Computer Science</h3>
-                            <span class="item-duration-location">2019 - 2023 | University of Malakand, Pakistan</span>
-                        </div>
-                        <p class="item-subheading">University of Malakand</p>
-                        <ul class="list-disc pl-5 text-gray-700 description-list">
-                            <li>Graduated with a commendable GPA of 3.75, demonstrating strong foundational knowledge in computer science.</li>
-                            <li>Comprehensive curriculum covered: Core Programming Languages, Web Development Principles, Database Management Systems, Operating Systems Internals, Networking Fundamentals, Software Engineering Methodologies, Artificial Intelligence Concepts, and foundational Mathematics & Statistics.</li>
-                        </ul>
-                    </div>
-                    <!-- Intermediate - GOVT POST GRADUATE JAHANZEB COLLEGE -->
-                    <div class="education-item">
-                        <div class="flex justify-between items-baseline mb-1">
-                            <h3 class="item-title">Intermediate, Pre-Engineering</h3>
-                            <span class="item-duration-location">June 2017 - June 2019 | GOVT POST GRADUATE JAHANZEB COLLEGE</span>
-                        </div>
-                        <p class="item-subheading">GOVT POST GRADUATE JAHANZEB COLLEGE</p>
-                    </div>
-                    <!-- Matric - Al Azhar Model School Rabat -->
-                    <div class="education-item">
-                        <div class="flex justify-between items-baseline mb-1">
-                            <h3 class="item-title">Matric, Science</h3>
-                            <span class="item-duration-location">March 2015 - March 2017 | Al Azhar Model School Rabat</span>
-                        </div>
-                        <p class="item-subheading">Al Azhar Model School Rabat</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Skills Section -->
-            <section id="skills" class="mb-8">
-                <h2 class="section-header">
-                    Skills
-                    <button class="summarize-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded text-sm transition duration-300 ease-in-out flex items-center" data-section-id="skills">
-                        Summarize ✨
-                    </button>
-                </h2>
-                <div class="skills-grid">
-                    <div class="skill-category-card">
-                        <h3 class="item-title mb-2">Technical Proficiencies</h3>
-                        <ul class="skill-list three-col pl-5 text-gray-700">
-                            <li><i class="fas fa-check-circle"></i> Languages: Python (Advanced), C++, Java, SQL (MySQL, PostgreSQL)</li>
-                            <li><i class="fas fa-check-circle"></i> Frameworks/Libraries: TensorFlow, Keras, PyTorch, Scikit-learn, XGBoost, LightGBM</li>
-                            <li><i class="fas fa-check-circle"></i> Specific ML/AI Skills: CNN, Model Tuning, IoT Sensor Networks, LSTM, Predictive Analytics, System Architecture, Energy Efficiency</li>
-                            <li><i class="fas fa-check-circle"></i> LLM/NLP Tools: LangChain, FAISS, Hugging Face, Llama-index, Unstructured.io, Docling, LlamaParse, pdfplumber, SpaCy, NLTK, Transformers</li>
-                            <li><i class="fas fa-check-circle"></i> Data Analysis/Viz: Pandas, NumPy, Matplotlib, Seaborn, Power BI, Tableau, Excel, Jupyter Notebook</li>
-                            <li><i class="fas fa-check-circle"></i> Dev Tools: Git, GitHub, VS Code, Streamlit, Gradio</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category-card">
-                        <h3 class="item-title mb-2">ML & AI Expertise</h3>
-                        <ul class="skill-list two-col pl-5 text-gray-700">
-                            <li><i class="fas fa-check-circle"></i> Supervised/Unsupervised Learning</li>
-                            <li><i class="fas fa-check-circle"></i> Data Preprocessing & Feature Engineering</li>
-                            <li><i class="fas fa-check-circle"></i> Neural Networks & Deep Learning</li>
-                            <li><i class="fas fa-check-circle"></i> Chatbot Development</li>
-                            <li><i class="fas fa-check-circle"></i> Retrieval-Augmented Generation (RAG)</li>
-                            <li><i class="fas fa-check-circle"></i> Model Training, Evaluation & Deployment</li>
-                            <li><i class="fas fa-check-circle"></i> Large Language Models (LLMs)</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category-card">
-                        <h3 class="item-title mb-2">Languages</h3>
-                        <ul class="skill-list two-col pl-5 text-gray-700">
-                            <li><i class="fas fa-check-circle"></i> English: Fluent (Professional Working)</li>
-                            <li><i class="fas fa-check-circle"></i> Pashto: Native/Bilingual</li>
-                            <li><i class="fas fa-check-circle"></i> Urdu: Native/Bilingual</li>
-                            <li><i class="fas fa-check-circle"></i> French: Basic</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Certifications Section -->
-            <section id="certifications" class="mb-8">
-                <h2 class="section-header">
-                    Certifications
-                    <button class="summarize-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded text-sm transition duration-300 ease-in-out flex items-center" data-section-id="certifications">
-                        Summarize ✨
-                    </button>
-                </h2>
-                <div class="space-y-4">
-                    <div class="certification-item">
-                        <h3 class="item-title">Create a Profile and Network on LinkedIn</h3>
-                    </div>
-                    <div class="certification-item">
-                        <h3 class="item-title">Machine Learning with Python</h3>
-                    </div>
-                    <div class="certification-item">
-                        <h3 class="item-title">Introduction to Deep Learning & Neural Networks with Keras</h3>
-                    </div>
-                    <div class="certification-item">
-                        <h3 class="item-title">Python (Basic) Certificate</h3>
-                    </div>
-                    <div class="certification-item">
-                        <h3 class="item-title">Statement of Accomplishment</h3>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Interests Section (New) -->
-            <section id="interests" class="mb-8">
-                <h2 class="section-header">
-                    Interests
-                    <button class="summarize-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded text-sm transition duration-300 ease-in-out flex items-center" data-section-id="interests">
-                        Summarize ✨
-                    </button>
-                </h2>
-                <div class="space-y-4">
-                    <div class="interest-item">
-                        <ul class="list-disc pl-5 text-gray-700 description-list">
-                            <li><span class="font-bold">Data Science & AI Community Engagement:</span> Actively participate in online forums, Kaggle competitions, and local meetups to stay updated with the latest trends and collaborate on challenging problems.</li>
-                            <li><span class="font-bold">Natural Language Processing (NLP):</span> Deep interest in the evolution of language models and their applications in solving real-world problems.</li>
-                            <li><span class="font-bold">IoT and Smart Systems:</span> Passionate about integrating AI with IoT devices to create intelligent, energy-efficient solutions.</li>
-                            <li><span class="font-bold">Competitive Programming:</span> Enjoy solving algorithmic challenges to enhance problem-solving skills and logical thinking.</li>
-                            <li><span class="font-bold">Reading (Tech & Sci-Fi):</span> Continuously explore new concepts in technology and engage with futuristic narratives.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-        </div> <!-- End of main-content-padding -->
-
-    </div> <!-- End of resume-container -->
-
-    <footer class="footer">
-        &copy; 2025 Muhammad Sohail. All rights reserved.
-    </footer>
-
-    <!-- Summary Modal -->
-    <div id="summaryModal" class="modal-overlay hidden">
-        <div class="modal-content">
-            <button class="modal-close-button" onclick="closeModal()">&times;</button>
-            <h3 class="text-xl font-bold mb-3">Summary</h3>
-            <div id="summaryContent" class="modal-body text-gray-700">
-                <!-- Summary will be loaded here -->
-            </div>
-            <div id="loadingIndicator" class="text-center mt-4 hidden">
-                <i class="fas fa-spinner fa-spin text-blue-500 text-2xl"></i>
-                <p class="text-gray-600">Generating summary...</p>
-            </div>
-            <div id="errorIndicator" class="text-center mt-4 hidden text-red-500">
-                <p>Error generating summary. Please try again.</p>
+            <div class="chat-input-container">
+                <input type="text" id="chat-input" placeholder="Ask a question..." class="rounded-full px-4 py-2 text-white">
+                <button id="send-chat-btn" class="rounded-full px-4 py-2 flex items-center justify-center">
+                    Send <div id="chat-loading-spinner" class="loading-spinner hidden"></div>
+                </button>
             </div>
         </div>
     </div>
 
-    <script>
-        // Dynamic Title Typing Animation
-        const titles = [
-            "Data Scientist",
-            "AI/ML Engineer",
-            "LLM Specialist",
-        ];
-        let titleIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const dynamicTitleElement = document.getElementById("dynamic-title");
-        const typingSpeed = 100; // milliseconds per character
-        const deletingSpeed = 50; // milliseconds per character
-        const delayBetweenTitles = 1500; // milliseconds before next action
+    <!-- Resume Matcher Modal -->
+    <div id="resume-matcher-modal" class="resume-matcher-modal">
+        <div class="modal-header">
+            <h3 class="text-xl font-bold">Resume Matcher Tool</h3>
+            <button class="close-modal text-gray-400 hover:text-white text-2xl">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p class="mb-4">Paste your job description here and instantly see how well Muhammad’s profile fits!</p>
+            <textarea id="job-description-input" class="job-description-input" placeholder="Paste job description here..."></textarea>
+            <button id="analyze-jd-btn" class="mt-4 px-6 py-3 bg-neon-green text-midnight-blue rounded-full hover:bg-teal-600 transition-colors flex items-center justify-center">
+                Analyze <div id="jd-loading-spinner" class="loading-spinner hidden"></div>
+            </button>
+            <div id="match-results" class="match-results mt-5 hidden">
+                <h4 class="font-semibold text-lg mb-2">Match Analysis:</h4>
+                <p><strong>Match Score:</strong> <span id="match-score"></span>%</p>
+                <p><strong>Top Matching Keywords:</strong> <span id="matched-keywords"></span></p>
+                <p><strong>Why this profile is a good fit:</strong> <span id="fit-summary"></span></p>
+            </div>
+        </div>
+    </div>
 
-        function typeWriter() {
-            const currentTitle = titles[titleIndex];
-            if (isDeleting) {
-                dynamicTitleElement.textContent = currentTitle.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                dynamicTitleElement.textContent = currentTitle.substring(0, charIndex + 1);
-                charIndex++;
+    <!-- Easter Egg Modal -->
+    <div id="easter-egg-modal" class="easter-egg-modal">
+        <h3 class="text-xl font-bold mb-4">Muhammad's Favorite Open-Source LLMs</h3>
+        <ul class="list-disc list-inside text-left mx-auto max-w-max">
+            <li>Llama</li>
+            <li>Mistral-7B</li>
+            <li>Falcon</li>
+            <li>Gemma</li>
+        </ul>
+        <button class="close-modal mt-6 px-4 py-2 bg-neon-green text-midnight-blue rounded-full hover:bg-teal-600">Close</button>
+    </div>
+
+    <div class="container mx-auto p-4 md:p-8">
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex flex-col justify-center items-center text-center">
+            <h1 class="text-5xl md:text-7xl font-bold mb-4">Muhammad Sohail</h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-6">“From messy data to intelligent solutions.”</p>
+            <p id="animated-subtitle" class="animated-subtitle text-2xl md:text-4xl font-mono text-neon-green mb-8">
+                <span style="animation-delay: 0s;">Data Scientist</span> <span style="animation-delay: 0.2s;">|</span>
+                <span style="animation-delay: 0.4s;">ML Developer</span> <span style="animation-delay: 0.6s;">|</span>
+                <span style="animation-delay: 0.8s;">LLM Enthusiast</span>
+            </p>
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
+                <a href="https://example.com/sohail_resume.pdf" target="_blank" class="px-8 py-3 bg-neon-green text-midnight-blue rounded-full shadow-lg hover:bg-teal-600 transition duration-300">
+                    View Resume
+                </a>
+                <a href="#contact" class="px-8 py-3 border-2 border-neon-green text-neon-green rounded-full shadow-lg hover:bg-neon-green hover:text-midnight-blue transition duration-300">
+                    Let’s Talk
+                </a>
+                <button id="hero-chatbot-btn" class="px-8 py-3 border-2 border-neon-green text-neon-green rounded-full shadow-lg hover:bg-neon-green hover:text-midnight-blue transition duration-300">
+                    Try AI Chatbot
+                </button>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-20">
+            <h2 class="section-title text-4xl font-bold mb-10 text-center">About Me</h2>
+            <div class="max-w-3xl mx-auto text-lg leading-relaxed text-center">
+                <p class="mb-4">
+                    I'm Muhammad Sohail, a passionate Data Scientist and ML Developer with a keen interest in building intelligent solutions.
+                    My expertise spans across <span class="font-bold text-neon-green">Python</span>, advanced machine learning techniques,
+                    and cutting-edge <span class="font-bold text-neon-green">Large Language Models (LLMs)</span>. I thrive on
+                    <span class="font-bold text-neon-green">Data Preprocessing</span>, <span class="font-bold text-neon-green">Model Training</span>,
+                    and creating powerful <span class="font-bold text-neon-green">Chatbots</span>.
+                </p>
+                <p class="mb-4">
+                    I am currently pursuing my <span class="font-bold text-neon-green">MSc M2 in Data Science and Network Intelligence</span> at
+                    <span class="font-bold text-neon-green">Institut Polytechnique de Paris, France</span>. My coursework includes Data Science, Data Visualization, Deep Learning, Blockchain, Network Intelligence, Internet of Things (IoT), Distributed Networking, and Business Modelling.
+                </p>
+                <p class="mb-4">
+                    I also hold a <span class="font-bold text-neon-green">Bachelor of Computer Science</span> from the <span class="font-bold text-neon-green">University of Malakand, Pakistan</span> (Aug 2019 - Sep 2023, GPA-3.75), where my coursework covered Programming Languages, Web Development, Database Management, Operating Systems, Networking, Software Engineering, AI, Mathematics, and Statistics.
+                </p>
+                <p class="mb-4">
+                    <span class="font-bold text-neon-green">Languages:</span> English (Fluent), Pashto (Native/Bilingual), Urdu (Native/Bilingual), French (Basic).
+                </p>
+                <p class="text-gray-400">
+                    <i class="fas fa-star text-neon-green mr-2"></i>Fun Fact: I love turning complex systems into simple, elegant solutions that deliver real-world impact.
+                </p>
+            </div>
+        </section>
+
+        <!-- Education Timeline Section -->
+        <section id="education" class="py-20">
+            <h2 class="section-title text-4xl font-bold mb-10 text-center">Education Timeline</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="timeline-item">
+                    <h3 class="text-2xl font-semibold text-neon-green">MSc M2 in Data Science and Network Intelligence</h3>
+                    <p class="text-xl mb-2">Institut Polytechnique de Paris, France | Sep 2024 - Current</p>
+                    <ul class="list-disc list-inside text-gray-300 space-y-1">
+                        <li>GPA: 15.81</li>
+                        <li>Coursework: Data Science, Data Visualization, Deep Learning, Blockchain, Network Intelligence, Internet of Things (IoT), Distributed Networking, Business Modelling.</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <h3 class="text-2xl font-semibold text-neon-green">Bachelor of Computer Science</h3>
+                    <p class="text-xl mb-2">University of Malakand, Pakistan | Aug 2019 - Sep 2023</p>
+                    <ul class="list-disc list-inside text-gray-300 space-y-1">
+                        <li>GPA: 3.75</li>
+                        <li>Coursework: Programming Languages, Web Development, Database Management, Operating Systems, Networking, Software Engineering, AI, Mathematics, and Statistics.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Timeline Section -->
+        <section id="experience" class="py-20">
+            <h2 class="section-title text-4xl font-bold mb-10 text-center">Experience Timeline</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="timeline-item">
+                    <h3 class="text-2xl font-semibold text-neon-green">Data Science Intern</h3>
+                    <p class="text-xl mb-2">Université Paris-Saclay | Mar 2025 - Present</p>
+                    <ul class="list-disc list-inside text-gray-300 space-y-1">
+                        <li>Developing an intelligent HR chatbot using LLMs and Retrieval-Augmented Generation (RAG) to automate staff inquiries on recruitment, leave, and training.</li>
+                        <li>Implementing robust validation mechanisms to ensure accurate and policy-compliant responses.</li>
+                        <li>Designing a user-friendly interface using Streamlit and Gradio, deployed within the university's internal data center.</li>
+                        <li>Leveraging tools like Unstructured.io, Docling, LlamaParse, pdfplumber, and LangChain for document parsing and knowledge extraction.</li>
+                        <li>Using open-source models such as LLaMA, Mistral, and others for generating contextual answers via API integration.</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <h3 class="text-2xl font-semibold text-neon-green">Data Analyst Intern (Remote)</h3>
+                    <p class="text-xl mb-2">Code Clause Pvt Ltd. | Oct 2023 - Apr 2024</p>
+                    <ul class="list-disc list-inside text-gray-300 space-y-1">
+                        <li>Led data preparation tasks, including handling missing values and standardizing data for accurate analysis.</li>
+                        <li>Applied advanced statistical techniques (e.g., linear regression, hypothesis testing) to uncover insights and support decision-making.</li>
+                        <li>Delivered actionable insights via dashboards and reports, enhancing stakeholder understanding and driving strategic decisions.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Gallery Section -->
+        <section id="projects" class="py-20">
+            <h2 class="section-title text-4xl font-bold mb-10 text-center">Projects Gallery</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- HR Chatbot Card -->
+                <div class="project-card rounded-xl p-6 shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-3 text-neon-green">HR Chatbot</h3>
+                    <p class="text-gray-300 mb-4">Intelligent HR chatbot for automating staff inquiries using LLMs and RAG.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">LangChain</span>
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">LLaMA</span>
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">Gradio</span>
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">RAG</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="#" target="_blank" class="text-neon-green hover:underline">GitHub <i class="fab fa-github ml-1"></i></a>
+                        <button class="expand-project text-neon-green hover:underline" data-project="hr-chatbot">Read More</button>
+                    </div>
+                    <div id="hr-chatbot-summary" class="hidden mt-4 text-sm text-gray-400">
+                        Detailed summary: This project involved the development of an HR chatbot capable of automating staff inquiries related to recruitment, leave, and training. It leverages advanced LLMs and Retrieval-Augmented Generation (RAG) to ensure contextual and accurate responses. Robust validation mechanisms were implemented for policy compliance. Tools used include Unstructured.io, Docling, LlamaParse, and pdfplumber for document parsing and knowledge extraction.
+                    </div>
+                </div>
+
+                <!-- MediBot Card -->
+                <div class="project-card rounded-xl p-6 shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-3 text-neon-green">MediBot</h3>
+                    <p class="text-gray-300 mb-4">AI-powered medical chatbot for retrieving trusted medical information.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">Python</span>
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">LangChain</span>
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">FAISS</span>
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">Mistral-7B</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="#" target="_blank" class="text-neon-green hover:underline">GitHub <i class="fab fa-github ml-1"></i></a>
+                        <button class="expand-project text-neon-green hover:underline" data-project="medibot">Read More</button>
+                    </div>
+                    <div id="medibot-summary" class="hidden mt-4 text-sm text-gray-400">
+                        Detailed summary: Built an AI-powered medical chatbot that retrieves trusted medical information using a context-based retrieval system. Tools Used: Python, LangChain, FAISS, Hugging Face, Mistral-7B, Streamlit, Hugging Face Spaces.
+                    </div>
+                </div>
+
+                <!-- Emotion Detection Card -->
+                <div class="project-card rounded-xl p-6 shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-3 text-neon-green">Emotion Detection</h3>
+                    <p class="text-gray-300 mb-4">System to detect perceived emotions in text using deep learning.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">TensorFlow</span>
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">Keras</span>
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">PyTorch</span>
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">NLTK</span>
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">SpaCy</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="#" target="_blank" class="text-neon-green hover:underline">GitHub <i class="fab fa-github ml-1"></i></a>
+                        <button class="expand-project text-neon-green hover:underline" data-project="emotion-detection">Read More</button>
+                    </div>
+                    <div id="emotion-detection-summary" class="hidden mt-4 text-sm text-gray-400">
+                        Detailed summary: Developed a system to detect perceived emotions in text using deep learning algorithms, enabling multi-label emotion classification and intensity estimation. This task focuses on detecting perceived emotions in text, including predicting emotions (joy, sadness, fear, anger, surprise, disgust), estimating emotion intensity, and cross-lingual emotion detection. The dataset covers a variety of languages, highlighting the complexity of interpreting emotions across cultures. Skills: Deep Learning · TensorFlow · Keras · PyTorch · Natural Language Processing: NLTK, SpaCy, Transformers · Data Processing: Pandas, NumPy · Visualization: Matplotlib, Seaborn · Deployment: Streamlit.
+                    </div>
+                </div>
+
+                <!-- Parkinson Predictor Card -->
+                <div class="project-card rounded-xl p-6 shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-3 text-neon-green">Parkinson Predictor</h3>
+                    <p class="text-gray-300 mb-4">Machine learning system for Parkinson's disease progression prediction.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">Python</span>
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">Scikit-learn</span>
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">XGBoost</span>
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">Streamlit</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="#" target="_blank" class="text-neon-green hover:underline">GitHub <i class="fab fa-github ml-1"></i></a>
+                        <button class="expand-project text-neon-green hover:underline" data-project="parkinson-predictor">Read More</button>
+                    </div>
+                    <div id="parkinson-predictor-summary" class="hidden mt-4 text-sm text-gray-400">
+                        Detailed summary: This machine learning system identifies subtypes of Parkinson's disease and predicts disease progression using clinical and genetic data. Tools like Python, Pandas, Scikit-learn, XGBoost, LightGBM, and Streamlit were used to develop and present the predictive models.
+                    </div>
+                </div>
+
+                <!-- Basic Image Classification with Tensorflow Card -->
+                <div class="project-card rounded-xl p-6 shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-3 text-neon-green">Basic Image Classification with Tensorflow</h3>
+                    <p class="text-gray-300 mb-4">A simple image classifier using TensorFlow and CNNs.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">TensorFlow</span>
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">Keras</span>
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">CNN</span>
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">Python</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="https://github.com/CallSohail/Basic-Image-Classification-With-Tensorflow" target="_blank" class="text-neon-green hover:underline">GitHub <i class="fab fa-github ml-1"></i></a>
+                        <button class="expand-project text-neon-green hover:underline" data-project="image-classification">Read More</button>
+                    </div>
+                    <div id="image-classification-summary" class="hidden mt-4 text-sm text-gray-400">
+                        Detailed summary: I built a simple image classifier using TensorFlow. The model distinguishes between image categories using a convolutional neural network (CNN). I preprocessed the image data—resizing, normalizing, and even augmenting to boost performance. The CNN, built with TensorFlow’s Keras API, learned to identify key features in images. Techniques like dropout and pooling were used to improve accuracy and reduce overfitting. This project sharpened my skills in deep learning and model evaluation, provided hands-on experience in tuning hyperparameters and troubleshooting model performance, and was a great step in my journey into AI.
+                    </div>
+                </div>
+
+                <!-- Dynamic Cooling System in Data Centers Using IoT & LSTM Card -->
+                <div class="project-card rounded-xl p-6 shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-3 text-neon-green">Dynamic Cooling System in Data Centers Using IoT & LSTM</h3>
+                    <p class="text-gray-300 mb-4">IoT-powered dynamic cooling system for data centers.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">IoT</span>
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">LSTM</span>
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">Predictive Analytics</span>
+                        <span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm">Energy Efficiency</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="https://drive.google.com/file/d/19cPWUFmizD4H7woCS7pQ2Xb_430EDupi/view?usp=sharing&usp=embed_facebook" target="_blank" class="text-neon-green hover:underline">Drive Link <i class="fas fa-link ml-1"></i></a>
+                        <button class="expand-project text-neon-green hover:underline" data-project="cooling-system">Read More</button>
+                    </div>
+                    <div id="cooling-system-summary" class="hidden mt-4 text-sm text-gray-400">
+                        Detailed summary: Developed a dynamic cooling system for data centers that combines air and liquid cooling. The system adjusts in real time based on sensor data. IoT sensors collect temperature, humidity, and energy data, and an LSTM neural network processes this information to predict cooling needs. Benefits include optimizing energy consumption, reducing carbon footprint, and enhancing system reliability and equipment lifespan. This project features a robust, multi-tier architecture with data collection, edge processing, central decision-making, and actuator control. Completed as part of my Master’s program at Telecom SudParis, it showcases my ability to integrate predictive analytics and smart systems to drive energy efficiency.
+                    </div>
+                </div>
+
+            </div>
+            <p class="text-center text-lg mt-8 text-gray-400">
+                <i class="fas fa-chart-line text-neon-green mr-2"></i>Projects: <span id="projects-counter">0</span>+
+            </p>
+        </section>
+
+        <!-- Skills & Tools Section -->
+        <section id="skills" class="py-20">
+            <h2 class="section-title text-4xl font-bold mb-10 text-center">Skills & Tools</h2>
+            <div class="flex justify-center mb-6 flex-wrap gap-3">
+                <button class="filter-skills px-6 py-2 rounded-full bg-gray-700 text-gray-200 hover:bg-neon-green hover:text-midnight-blue transition-colors" data-filter="all">All</button>
+                <button class="filter-skills px-6 py-2 rounded-full bg-gray-700 text-gray-200 hover:bg-neon-green hover:text-midnight-blue transition-colors" data-filter="programming">Programming</button>
+                <button class="filter-skills px-6 py-2 rounded-full bg-gray-700 text-gray-200 hover:bg-neon-green hover:text-midnight-blue transition-colors" data-filter="ml-frameworks">ML Frameworks</button>
+                <button class="filter-skills px-6 py-2 rounded-full bg-gray-700 text-gray-200 hover:bg-neon-green hover:text-midnight-blue transition-colors" data-filter="llm-tools">LLMs & RAG tools</button>
+                <button class="filter-skills px-6 py-2 rounded-full bg-gray-700 text-gray-200 hover:bg-neon-green hover:text-midnight-blue transition-colors" data-filter="ml-concepts">ML & AI Concepts</button>
+                <button class="filter-skills px-6 py-2 rounded-full bg-gray-700 text-gray-200 hover:bg-neon-green hover:text-midnight-blue transition-colors" data-filter="deployment">Deployment</button>
+                <button class="filter-skills px-6 py-2 rounded-full bg-gray-700 text-gray-200 hover:bg-neon-green hover:text-midnight-blue transition-colors" data-filter="tools">Tools</button>
+            </div>
+            <div id="skills-container" class="flex flex-wrap justify-center gap-4">
+                <span class="skill-badge" data-category="programming">Python</span>
+                <span class="skill-badge" data-category="programming">C++</span>
+                <span class="skill-badge" data-category="programming">Java</span>
+                <span class="skill-badge" data-category="programming">SQL</span>
+                <span class="skill-badge" data-category="ml-frameworks">TensorFlow</span>
+                <span class="skill-badge" data-category="ml-frameworks">Keras</span>
+                <span class="skill-badge" data-category="ml-frameworks">PyTorch</span>
+                <span class="skill-badge" data-category="ml-frameworks">Scikit-learn</span>
+                <span class="skill-badge" data-category="ml-frameworks">XGBoost</span>
+                <span class="skill-badge" data-category="ml-frameworks">LightGBM</span>
+                <span class="skill-badge" data-category="llm-tools">LangChain</span>
+                <span class="skill-badge" data-category="llm-tools">FAISS</span>
+                <span class="skill-badge" data-category="llm-tools">Hugging Face</span>
+                <span class="skill-badge" data-category="llm-tools">LLMs (General)</span>
+                <span class="skill-badge" data-category="llm-tools">RAG</span>
+                <span class="skill-badge" data-category="llm-tools">Chatbot Development</span>
+                <span class="skill-badge" data-category="llm-tools">Chromadb</span>
+                <span class="skill-badge" data-category="llm-tools">Unstructured.io</span>
+                <span class="skill-badge" data-category="llm-tools">Docling</span>
+                <span class="skill-badge" data-category="llm-tools">LlamaParse</span>
+                <span class="skill-badge" data-category="llm-tools">pdfplumber</span>
+                <span class="skill-badge" data-category="ml-concepts">Supervised Learning</span>
+                <span class="skill-badge" data-category="ml-concepts">Unsupervised Learning</span>
+                <span class="skill-badge" data-category="ml-concepts">Data Preprocessing</span>
+                <span class="skill-badge" data-category="ml-concepts">Model Training</span>
+                <span class="skill-badge" data-category="ml-concepts">Neural Networks</span>
+                <span class="skill-badge" data-category="ml-concepts">Deep Learning</span>
+                <span class="skill-badge" data-category="ml-concepts">Data Visualization</span>
+                <span class="skill-badge" data-category="ml-concepts">A/B Testing</span>
+                <span class="skill-badge" data-category="ml-concepts">Feature Engineering</span>
+                <span class="skill-badge" data-category="ml-concepts">Convolutional Neural Networks (CNN)</span>
+                <span class="skill-badge" data-category="ml-concepts">Model Tuning</span>
+                <span class="skill-badge" data-category="ml-concepts">Natural Language Processing (NLP)</span>
+                <span class="skill-badge" data-category="ml-concepts">IoT Sensor Networks</span>
+                <span class="skill-badge" data-category="ml-concepts">LSTM Neural Networks</span>
+                <span class="skill-badge" data-category="ml-concepts">Predictive Analytics</span>
+                <span class="skill-badge" data-category="ml-concepts">System Architecture</span>
+                <span class="skill-badge" data-category="ml-concepts">Energy Efficiency</span>
+                <span class="skill-badge" data-category="deployment">Streamlit</span>
+                <span class="skill-badge" data-category="deployment">Gradio</span>
+                <span class="skill-badge" data-category="tools">Power BI</span>
+                <span class="skill-badge" data-category="tools">Tableau</span>
+                <span class="skill-badge" data-category="tools">Excel</span>
+                <span class="skill-badge" data-category="tools">Pandas</span>
+                <span class="skill-badge" data-category="tools">NumPy</span>
+                <span class="skill-badge" data-category="tools">Matplotlib</span>
+                <span class="skill-badge" data-category="tools">Seaborn</span>
+                <span class="skill-badge" data-category="tools">Git</span>
+                <span class="skill-badge" data-category="tools">GitHub</span>
+                <span class="skill-badge" data-category="tools">VS Code</span>
+            </div>
+            <p class="text-center text-lg mt-8 text-gray-400">
+                <i class="fas fa-tools text-neon-green mr-2"></i>Tools Mastered: <span id="tools-counter">0</span>+
+            </p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 text-center">
+            <h2 class="section-title text-4xl font-bold mb-10">Let’s build smart things together.</h2>
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="https://github.com/muhammadsohail951" target="_blank" class="text-5xl text-gray-300 hover:text-neon-green transition-colors">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/muhammadsohail951" target="_blank" class="text-5xl text-gray-300 hover:text-neon-green transition-colors">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:sohail.cs951@gmail.com" class="text-5xl text-gray-300 hover:text-neon-green transition-colors">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://huggingface.co/muhammadsohail" target="_blank" class="text-5xl text-gray-300 hover:text-neon-green transition-colors">
+                    <i class="fas fa-robot"></i> <!-- Using robot icon for Hugging Face -->
+                </a>
+            </div>
+            <button id="cold-email-bot-btn" class="px-8 py-3 border-2 border-neon-green text-neon-green rounded-full shadow-lg hover:bg-neon-green hover:text-midnight-blue transition duration-300">
+                Generate Cold Email (AI)
+            </button>
+             <div id="cold-email-modal" class="cold-email-modal hidden">
+                <div class="modal-header">
+                    <h3 class="text-xl font-bold">Generate Cold Email</h3>
+                    <button class="close-modal text-gray-400 hover:text-white text-2xl">&times;</button>
+                </div>
+                <div class="modal-body flex flex-col h-full">
+                    <p class="mb-4 text-left">Tell me what kind of email you want to generate (e.g., "Write an email to hire Sohail for an NLP internship", "Email for collaboration on a data science project").</p>
+                    <input type="text" id="cold-email-prompt-input" placeholder="Your email prompt..." class="rounded-full px-4 py-2 text-white mb-4">
+                    <button id="generate-email-btn" class="px-6 py-3 bg-neon-green text-midnight-blue rounded-full hover:bg-teal-600 transition-colors flex items-center justify-center">
+                        Generate Email <div id="email-loading-spinner" class="loading-spinner hidden"></div>
+                    </button>
+                    <div id="generated-email-output" class="match-results mt-5 hidden text-left">
+                        <h4 class="font-semibold text-lg mb-2">Generated Email:</h4>
+                        <textarea id="email-text-output" class="job-description-input" rows="10" readonly></textarea>
+                        <button id="copy-email-btn" class="mt-4 px-4 py-2 bg-gray-700 text-gray-200 rounded-full hover:bg-gray-600 transition-colors">Copy to Clipboard</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-10 text-center text-gray-500 text-sm">
+            <p>Copyright © Muhammad Sohail</p>
+            <p class="mt-2">Built with <span class="text-red-500">♥</span> using Gemini & Streamlit-inspired design</p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <a href="https://example.com/sohail_resume.pdf" target="_blank" class="hover:text-neon-green">Resume PDF</a>
+                <a href="https://github.com/muhammadsohail951/portfolio" target="_blank" class="hover:text-neon-green">GitHub Pages Repo</a>
+            </div>
+        </footer>
+    </div>
+
+    <script type="module">
+        // Firebase Imports - MUST be at the top level of the module script
+        // These imports will be processed as ES Modules.
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        // import { getFirestore, collection, addDoc, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js"; // Uncomment if Firestore is used
+
+
+        // Resume Data for Chatbot and Matcher
+        const resumeData = {
+            name: "Muhammad Sohail",
+            email: "sohail.cs951@gmail.com",
+            phone: "(33) 781588798",
+            linkedin: "muhammadsohail951",
+            location: "Evry France",
+            experience: [
+                {
+                    title: "Data Science Intern",
+                    company: "Université Paris-Saclay",
+                    duration: "Mar 2025 - Present",
+                    description: "Developing an intelligent HR chatbot using LLMs and Retrieval-Augmented Generation (RAG) to automate staff inquiries on recruitment, leave, and training. Implementing robust validation mechanisms to ensure accurate and policy-compliant responses. Designing a user-friendly interface using Streamlit and Gradio, deployed within the university's internal data center. Leveraging tools like Unstructured.io, Docling, LlamaParse, pdfplumber, and LangChain for document parsing and knowledge extraction. Using open-source models such as LLaMA, Mistral, and others for generating contextual answers via API integration.",
+                    keywords: ["LLMs", "RAG", "Streamlit", "Gradio", "LangChain", "LLaMA", "Mistral", "Unstructured.io", "Docling", "LlamaParse", "pdfplumber"]
+                },
+                {
+                    title: "Data Analyst Intern (Remote)",
+                    company: "Code Clause Pvt Ltd.",
+                    duration: "Oct 2023 - Apr 2024",
+                    description: "Led data preparation tasks, including handling missing values and standardizing data for accurate analysis. Applied advanced statistical techniques (e.g., linear regression, hypothesis testing) to uncover insights and support decision-making. Delivered actionable insights via dashboards and reports, enhancing stakeholder understanding and driving strategic decisions.",
+                    keywords: ["Data Preparation", "Statistical Analysis", "Linear Regression", "Hypothesis Testing", "Dashboards", "Reports"]
+                }
+            ],
+            education: [
+                {
+                    degree: "MSc M2 in Data Science and Network Intelligence",
+                    institution: "Institut Polytechnique de Paris, France",
+                    duration: "Sep 2024 - Current",
+                    gpa: "15.81",
+                    coursework: "Data Science, Data Visualization, Deep Learning, Blockchain, Network Intelligence, Internet of Things (IoT), Distributed Networking, Business Modelling"
+                },
+                {
+                    degree: "Bachelor of Computer Science",
+                    institution: "University of Malakand, Pakistan",
+                    duration: "Aug 2019 - Sep 2023",
+                    gpa: "3.75",
+                    coursework: "Programming Languages, Web Development, Database Management, Operating Systems, Networking, Software Engineering, AI, Mathematics, and Statistics"
+                }
+            ],
+            projects: [
+                {
+                    name: "HR Chatbot",
+                    description: "Intelligent HR chatbot for automating staff inquiries using LLMs and RAG.",
+                    tools: ["LangChain", "LLaMA", "Gradio", "RAG", "Unstructured.io", "Docling", "LlamaParse", "pdfplumber"],
+                    github_link: "#", // Placeholder
+                    summary: "This project involved the development of an HR chatbot capable of automating staff inquiries related to recruitment, leave, and training. It leverages advanced LLMs and Retrieval-Augmented Generation (RAG) to ensure contextual and accurate responses. Robust validation mechanisms were implemented for policy compliance. Tools used include Unstructured.io, Docling, LlamaParse, and pdfplumber for document parsing and knowledge extraction."
+                },
+                {
+                    name: "MediBot",
+                    description: "AI-powered medical chatbot for retrieving trusted medical information.",
+                    tools: ["Python", "LangChain", "FAISS", "Hugging Face", "Mistral-7B", "Streamlit", "Hugging Face Spaces"],
+                    github_link: "#", // Placeholder
+                    summary: "Built an AI-powered medical chatbot that retrieves trusted medical information using a context-based retrieval system. Tools Used: Python, LangChain, FAISS, Hugging Face, Mistral-7B, Streamlit, Hugging Face Spaces."
+                },
+                {
+                    name: "Emotion Detection",
+                    description: "System to detect perceived emotions in text using deep learning.",
+                    tools: ["TensorFlow", "Keras", "PyTorch", "NLTK", "SpaCy", "Transformers", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Streamlit"],
+                    github_link: "#", // Placeholder
+                    summary: "Developed a system to detect perceived emotions in text using deep learning algorithms, enabling multi-label emotion classification and intensity estimation. This task focuses on detecting perceived emotions in text, including predicting emotions (joy, sadness, fear, anger, surprise, disgust), estimating emotion intensity, and cross-lingual emotion detection. The dataset covers a variety of languages, highlighting the complexity of interpreting emotions across cultures. Skills: Deep Learning · TensorFlow · Keras · PyTorch · Natural Language Processing: NLTK, SpaCy, Transformers · Data Processing: Pandas, NumPy · Visualization: Matplotlib, Seaborn · Deployment: Streamlit."
+                },
+                {
+                    name: "Parkinson's Disease Progression Prediction",
+                    description: "Machine learning system for Parkinson's disease progression prediction.",
+                    tools: ["Python", "Pandas", "Scikit-learn", "XGBoost", "LightGBM", "Streamlit"],
+                    github_link: "#", // Placeholder
+                    summary: "This machine learning system identifies subtypes of Parkinson's disease and predicts disease progression using clinical and genetic data. Tools like Python, Pandas, Scikit-learn, XGBoost, LightGBM, and Streamlit were used to develop and present the predictive models."
+                },
+                {
+                    name: "Basic Image Classification with Tensorflow",
+                    description: "A simple image classifier using TensorFlow and CNNs.",
+                    tools: ["TensorFlow", "Keras", "Convolutional Neural Networks (CNN)", "Python", "Pandas", "NumPy", "Model Tuning"],
+                    github_link: "https://github.com/CallSohail/Basic-Image-Classification-With-Tensorflow",
+                    summary: "I built a simple image classifier using TensorFlow. The model distinguishes between image categories using a convolutional neural network (CNN). I preprocessed the image data—resizing, normalizing, and even augmenting to boost performance. The CNN, built with TensorFlow’s Keras API, learned to identify key features in images. Techniques like dropout and pooling were used to improve accuracy and reduce overfitting. This project sharpened my skills in deep learning and model evaluation, provided hands-on experience in tuning hyperparameters and troubleshooting model performance, and was a great step in my journey into AI."
+                },
+                {
+                    name: "Dynamic Cooling System in Data Centers Using IoT & LSTM",
+                    description: "IoT-powered dynamic cooling system for data centers.",
+                    tools: ["IoT Sensor Networks", "LSTM Neural Networks", "Predictive Analytics", "System Architecture", "Energy Efficiency", "Python"],
+                    github_link: "https://drive.google.com/file/d/19cPWUFmizD4H7woCS7pQ2Xb_430EDupi/view?usp=sharing&usp=embed_facebook",
+                    summary: "Developed a dynamic cooling system for data centers that combines air and liquid cooling. The system adjusts in real time based on sensor data. IoT sensors collect temperature, humidity, and energy data, and an LSTM neural network processes this information to predict cooling needs. Benefits include optimizing energy consumption, reducing carbon footprint, and enhancing system reliability and equipment lifespan. This project features a robust, multi-tier architecture with data collection, edge processing, central decision-making, and actuator control. Completed as part of my Master’s program at Telecom SudParis, it showcases my ability to integrate predictive analytics and smart systems to drive energy efficiency."
+                }
+            ],
+            skills: {
+                "Programming": ["Python", "C++", "Java", "SQL (MySQL, PostgreSQL)"],
+                "ML Frameworks": ["TensorFlow", "Keras", "PyTorch", "Scikit-learn", "XGBoost", "LightGBM"],
+                "LLMs & RAG tools": ["LangChain", "FAISS", "Hugging Face", "LLMs", "Retrieval-Augmented Generation (RAG)", "Chatbot Development", "Chromadb", "Unstructured.io", "Docling", "LlamaParse", "pdfplumber", "NLTK", "SpaCy", "Transformers"],
+                "Machine Learning & AI Concepts": [
+                    "Supervised/Unsupervised Learning",
+                    "Data Preprocessing",
+                    "Model Training",
+                    "Neural Networks",
+                    "Deep Learning",
+                    "Data Visualization",
+                    "A/B Testing",
+                    "Feature Engineering",
+                    "Convolutional Neural Networks (CNN)",
+                    "Model Tuning",
+                    "Natural Language Processing (NLP)",
+                    "IoT Sensor Networks",
+                    "LSTM Neural Networks",
+                    "Predictive Analytics",
+                    "System Architecture",
+                    "Energy Efficiency"
+                ],
+                "Deployment": ["Streamlit", "Gradio"],
+                "Tools": ["Power BI", "Tableau", "Excel", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Git", "GitHub", "VS Code"]
+            },
+            languages: {
+                "English": "Fluent",
+                "Pashto": "Native/Bilingual",
+                "Urdu": "Native/Bilingual",
+                "French": "Basic"
             }
+        };
 
-            let currentTypingSpeed = isDeleting ? deletingSpeed : typingSpeed;
+        // --- Global Variables for Firebase/Gemini API (Canvas Environment) ---
+        // These are provided by the Canvas environment. If they are not defined,
+        // fallback to default values (e.g., for local development).
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? initialAuthToken : null; // Corrected: Use initialAuthToken directly
+        const apiKey = "AIzaSyD_FbycXS6CcgnSc61J7S-MzzjyWW0RlkI"; // API Key provided by the user
 
-            if (!isDeleting && charIndex === currentTitle.length) {
-                currentTypingSpeed = delayBetweenTitles;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                titleIndex = (titleIndex + 1) % titles.length;
-                currentTypingSpeed = typingSpeed;
-            }
+        // Initialize Firebase (if Firebase config is available)
+        let app, db, auth;
+        let userId = 'anonymous'; // Default to anonymous
 
-            setTimeout(typeWriter, currentTypingSpeed);
+        // Only initialize Firebase if a config is provided.
+        // This makes the app runnable even outside the Canvas environment for basic UI.
+        if (Object.keys(firebaseConfig).length > 0) {
+            app = initializeApp(firebaseConfig);
+            auth = getAuth(app);
+            // db = getFirestore(app); // Uncomment if Firestore is used
+
+            // Authenticate user
+            onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    userId = user.uid;
+                    console.log("Authenticated user ID:", userId);
+                } else {
+                    try {
+                        if (initialAuthToken) {
+                            await signInWithCustomToken(auth, initialAuthToken);
+                        } else {
+                            await signInAnonymously(auth);
+                        }
+                        userId = auth.currentUser?.uid || crypto.randomUUID(); // Fallback if auth.currentUser is null
+                        console.log("Signed in with user ID:", userId);
+                    } catch (error) {
+                        console.error("Firebase authentication error:", error);
+                        // Fallback to a random UUID if auth fails
+                        userId = crypto.randomUUID();
+                        console.log("Continuing with anonymous user ID:", userId);
+                    }
+                }
+            });
+        } else {
+            console.warn("Firebase config not found. AI features relying on Firebase/Gemini API might not function.");
+            userId = crypto.randomUUID(); // Generate a random ID for local testing without Firebase
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            typeWriter();
 
-            // LLM Summarizer Functionality
-            const summarizeButtons = document.querySelectorAll('.summarize-btn');
-            const summaryModal = document.getElementById('summaryModal');
-            const summaryContent = document.getElementById('summaryContent');
-            const loadingIndicator = document.getElementById('loadingIndicator');
-            const errorIndicator = document.getElementById('errorIndicator');
+        // --- Particle Background Animation ---
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const numParticles = 100;
+        const connectionDistance = 150; // Max distance for lines between particles
 
-            summarizeButtons.forEach(button => {
-                button.addEventListener('click', async () => {
-                    const sectionId = button.dataset.sectionId;
-                    const sectionElement = document.getElementById(sectionId);
-                    let contentToSummarize = "";
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
 
-                    if (sectionElement) {
-                        // Clone the section to remove the button before extracting text
-                        const sectionClone = sectionElement.cloneNode(true);
-                        const buttonToRemove = sectionClone.querySelector('.summarize-btn');
-                        if (buttonToRemove) {
-                            buttonToRemove.remove();
-                        }
-                        contentToSummarize = sectionClone.textContent; // Use textContent for full text including hidden parts if any
-                    }
-
-                    summaryModal.classList.remove('hidden');
-                    summaryContent.textContent = '';
-                    loadingIndicator.classList.remove('hidden');
-                    errorIndicator.classList.add('hidden');
-
-                    const prompt = `Please provide a concise summary of the following resume section. Keep it to 3-5 sentences and highlight key achievements and responsibilities:\n\n${contentToSummarize.trim()}`;
-
-                    try {
-                        let chatHistory = [];
-                        chatHistory.push({ role: "user", parts: [{ text: prompt }] });
-                        const payload = { contents: chatHistory };
-                        const apiKey = "AIzaSyCgygjemkTqlsisoLcmVJP7XF__QFvr9ww"; // YOUR API KEY HERE
-                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-                        const response = await fetch(apiUrl, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(payload)
-                        });
-
-                        const result = await response.json();
-
-                        if (result.candidates && result.candidates.length > 0 &&
-                            result.candidates[0].content && result.candidates[0].content.parts &&
-                            result.candidates[0].content.parts.length > 0) {
-                            const text = result.candidates[0].content.parts[0].text;
-                            summaryContent.textContent = text;
-                        } else {
-                            summaryContent.textContent = "Could not generate summary. Unexpected API response.";
-                            errorIndicator.classList.remove('hidden');
-                        }
-                    } catch (error) {
-                        console.error("Error calling Gemini API:", error);
-                        summaryContent.textContent = "Failed to fetch summary due to a network or API error.";
-                        errorIndicator.classList.remove('hidden');
-                    } finally {
-                        loadingIndicator.classList.add('hidden');
-                    }
-                });
-            });
-
-            window.closeModal = function() {
-                summaryModal.classList.add('hidden');
-                summaryContent.textContent = '';
-            };
-
-            summaryModal.addEventListener('click', (event) => {
-                if (event.target === summaryModal) {
-                    closeModal();
-                }
-            });
-
-            // Interactive AI Resume Q&A Logic
-            const aiPromptInputResume = document.getElementById('aiPromptInputResume');
-            const generateResponseBtnResume = document.getElementById('generateResponseBtnResume');
-            const aiResponseAreaResume = document.getElementById('aiResponseAreaResume');
-            const aiLoadingSpinnerResume = document.getElementById('aiLoadingSpinnerResume');
-
-            // Function to gather ALL resume text dynamically from the DOM
-            function getResumeText() {
-                const resumeContainer = document.querySelector('.resume-container');
-                if (resumeContainer) {
-                    // Clone the container to remove interactive elements before extracting text
-                    const clone = resumeContainer.cloneNode(true);
-
-                    // Remove summarize buttons
-                    clone.querySelectorAll('.summarize-btn').forEach(btn => btn.remove());
-
-                    // Remove the AI Q&A input/button/response area itself to avoid self-referencing issues
-                    const aiToolSection = clone.querySelector('#ai-interactive-tool');
-                    if (aiToolSection) {
-                        aiToolSection.remove();
-                    }
-
-                    // Get textContent from the cloned and cleaned resume container
-                    return clone.textContent.trim();
-                }
-                return "";
+        class Particle {
+            constructor(x, y) {
+                this.x = x || Math.random() * canvas.width;
+                this.y = y || Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5; // Slower movement
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 1.5 + 0.5; // Smaller particles
+                this.color = 'rgba(56, 178, 172, 0.8)'; // Neon green/teal
             }
 
-            if (generateResponseBtnResume) {
-                generateResponseBtnResume.addEventListener('click', async () => {
-                    const userQuestion = aiPromptInputResume.value.trim();
-                    if (!userQuestion) {
-                        aiResponseAreaResume.innerHTML = '<p class="text-red-500">Please enter a question!</p>';
-                        return;
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Bounce off edges
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < numParticles; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                // Draw lines between nearby particles
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < connectionDistance) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(56, 178, 172, ${1 - (distance / connectionDistance)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
                     }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
 
-                    aiResponseAreaResume.innerHTML = '<p class="text-gray-600">Thinking...</p>';
-                    aiLoadingSpinnerResume.classList.remove('hidden');
-                    generateResponseBtnResume.disabled = true;
+        window.addEventListener('load', () => {
+            resizeCanvas();
+            initParticles();
+            animateParticles();
+        });
+        window.addEventListener('resize', resizeCanvas);
 
-                    const resumeContent = getResumeText(); // Get the entire resume content
-                    const prompt = `Based on the following resume content, answer the user's question. Be concise, professional, and only use information explicitly stated in the resume. If the information is not in the resume, state that you don't have enough information.
 
-Resume Content:
-"""
-${resumeContent}
-"""
+        // --- Theme Toggle ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const body = document.body;
 
-User Question: "${userQuestion}"
-
-Concise Answer:`;
-
-                    try {
-                        let chatHistory = [];
-                        chatHistory.push({ role: "user", parts: [{ text: prompt }] });
-                        const payload = { contents: chatHistory };
-                        const apiKey = "AIzaSyCgygjemkTqlsisoLcmVJP7XF__QFvr9ww"; // YOUR API KEY HERE
-                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-                        const response = await fetch(apiUrl, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(payload)
-                        });
-
-                        const result = await response.json();
-
-                        if (result.candidates && result.candidates.length > 0 &&
-                            result.candidates[0].content && result.candidates[0].content.parts &&
-                            result.candidates[0].content.parts.length > 0) {
-                            const text = result.candidates[0].content.parts[0].text;
-                            aiResponseAreaResume.innerHTML = `<p>${text}</p>`;
-                        } else {
-                            aiResponseAreaResume.innerHTML = '<p class="text-red-500">Could not get a response from AI. Please try again.</p>';
-                        }
-                    } catch (error) {
-                        console.error("Error with AI Resume Q&A demo:", error);
-                        aiResponseAreaResume.innerHTML = '<p class="text-red-500">Failed to get response due to a network or API error.</p>';
-                    } finally {
-                        aiLoadingSpinnerResume.classList.add('hidden');
-                        generateResponseBtnResume.disabled = false;
-                    }
-                });
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                // Adjust particle color for light mode if desired
+                particles.forEach(p => p.color = 'rgba(49, 130, 206, 0.8)'); // Blue for light mode
+            } else {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                particles.forEach(p => p.color = 'rgba(56, 178, 172, 0.8)'); // Neon green for dark mode
             }
         });
+
+
+        // --- Smooth Scrolling ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+
+        // --- Animated Subtitle ---
+        const subtitleSpans = document.querySelectorAll('#animated-subtitle span');
+        subtitleSpans.forEach((span, index) => {
+            span.style.animationDelay = `${index * 0.15}s`;
+        });
+
+
+        // --- Project Card Expandable Summary ---
+        document.querySelectorAll('.expand-project').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const projectId = e.target.dataset.project;
+                const summaryDiv = document.getElementById(`${projectId}-summary`);
+                if (summaryDiv) {
+                    summaryDiv.classList.toggle('hidden');
+                    e.target.textContent = summaryDiv.classList.contains('hidden') ? 'Read More' : 'Show Less';
+                }
+            });
+        });
+
+
+        // --- Skill Filter ---
+        const filterButtons = document.querySelectorAll('.filter-skills');
+        const skillBadges = document.querySelectorAll('.skill-badge');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const filter = e.target.dataset.filter;
+                skillBadges.forEach(badge => {
+                    const category = badge.dataset.category;
+                    if (filter === 'all' || category === filter) {
+                        badge.style.display = 'inline-block';
+                        badge.style.animation = 'fadeInScale 0.5s forwards'; // Re-animate
+                        badge.style.opacity = 0; // Reset opacity for animation
+                    } else {
+                        badge.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // --- Interactive Stats Counters ---
+        const projectsCounter = document.getElementById('projects-counter');
+        const toolsCounter = document.getElementById('tools-counter');
+
+        function animateCounter(element, target, duration) {
+            let start = 0;
+            const increment = target / (duration / 16); // 16ms per frame
+            const step = () => {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start);
+                    requestAnimationFrame(step);
+                } else {
+                    element.textContent = target;
+                }
+            };
+            requestAnimationFrame(step);
+        }
+
+        // Trigger counters when section is in view
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5 // Trigger when 50% of the section is visible
+        };
+
+        const projectsSection = document.getElementById('projects');
+        const skillsSection = document.getElementById('skills');
+
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.id === 'projects') {
+                        animateCounter(projectsCounter, resumeData.projects.length, 1000);
+                        observer.unobserve(entry.target); // Stop observing once animated
+                    } else if (entry.target.id === 'skills') {
+                        let totalTools = 0;
+                        for (const category in resumeData.skills) {
+                            totalTools += resumeData.skills[category].length;
+                        }
+                        animateCounter(toolsCounter, totalTools, 1500);
+                        observer.unobserve(entry.target); // Stop observing once animated
+                    }
+                }
+            });
+        }, observerOptions);
+
+        sectionObserver.observe(projectsSection);
+        sectionObserver.observe(skillsSection);
+
+
+        // --- Chatbot Functionality ---
+        const chatbotFloatBtn = document.getElementById('chatbot-float-btn');
+        const heroChatbotBtn = document.getElementById('hero-chatbot-btn');
+        const chatbotModal = document.getElementById('chatbot-modal');
+        const closeModals = document.querySelectorAll('.close-modal'); // Select all close buttons
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const sendChatBtn = document.getElementById('send-chat-btn');
+        const chatLoadingSpinner = document.getElementById('chat-loading-spinner');
+
+        function openModal(modal) {
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('opacity-100', 'scale-100'), 10); // For transition
+        }
+
+        function closeModalsFunc() {
+            document.querySelectorAll('.chatbot-modal, .resume-matcher-modal, .cold-email-modal, .easter-egg-modal').forEach(modal => {
+                modal.style.display = 'none'; // Directly hide for now
+                modal.classList.remove('opacity-100', 'scale-100'); // Reset transition classes
+            });
+        }
+
+        chatbotFloatBtn.addEventListener('click', () => openModal(chatbotModal));
+        heroChatbotBtn.addEventListener('click', () => openModal(chatbotModal));
+
+        closeModals.forEach(button => {
+            button.addEventListener('click', closeModalsFunc);
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (event) => {
+            if (event.target === chatbotModal || event.target === resumeMatcherModal || event.target === coldEmailModal || event.target === easterEggModal) {
+                closeModalsFunc();
+            }
+        });
+
+        function addMessage(message, sender) {
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add('chat-message', sender === 'user' ? 'user' : 'ai');
+            msgDiv.textContent = message;
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll to bottom
+        }
+
+        async function sendChatMessage() {
+            const userMessage = chatInput.value.trim();
+            if (!userMessage) return;
+
+            addMessage(userMessage, 'user');
+            chatInput.value = '';
+            chatLoadingSpinner.classList.remove('hidden');
+            sendChatBtn.disabled = true;
+
+            try {
+                // Construct a detailed prompt for the LLM based on user query and resume data
+                const fullPrompt = `You are an AI assistant for Muhammad Sohail's portfolio. Your goal is to answer questions about him and his resume accurately and concisely. Use the provided resume data. If you don't know the answer based on the resume, politely say so.
+
+                Muhammad Sohail's Resume Data:
+                Name: ${resumeData.name}
+                Email: ${resumeData.email}
+                Phone: ${resumeData.phone}
+                LinkedIn: https://linkedin.com/in/${resumeData.linkedin}
+                Location: ${resumeData.location}
+
+                Experience:
+                ${resumeData.experience.map(exp => `- ${exp.title} at ${exp.company} (${exp.duration}): ${exp.description}`).join('\n')}
+
+                Education:
+                ${resumeData.education.map(edu => `- ${edu.degree} from ${edu.institution} (${edu.duration})${edu.gpa ? `, GPA: ${edu.gpa}` : ''}${edu.coursework ? `, Coursework: ${edu.coursework}` : ''}`).join('\n')}
+
+                Projects:
+                ${resumeData.projects.map(proj => `- ${proj.name}: ${proj.description} (Tools: ${proj.tools.join(', ')})`).join('\n')}
+
+                Skills:
+                ${Object.entries(resumeData.skills).map(([category, skillList]) => `${category}: ${skillList.join(', ')}`).join('\n')}
+
+                Languages (Spoken):
+                ${Object.entries(resumeData.languages).map(([lang, proficiency]) => `- ${lang} (${proficiency})`).join('\n')}
+
+
+                User's question: "${userMessage}"
+
+                Provide a direct and helpful answer based on the above information.`;
+
+                const chatHistory = [{ role: "user", parts: [{ text: fullPrompt }] }];
+                const payload = { contents: chatHistory };
+                // Using the provided API key here
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const aiResponse = result.candidates[0].content.parts[0].text;
+                    addMessage(aiResponse, 'ai');
+                } else {
+                    addMessage("I apologize, I couldn't process your request at this moment. Please try again.", 'ai');
+                    console.error("Gemini API response structure unexpected:", result);
+                }
+            } catch (error) {
+                console.error("Error communicating with Gemini API:", error);
+                addMessage("I'm sorry, I'm having trouble connecting right now. Please try again later.", 'ai');
+            } finally {
+                chatLoadingSpinner.classList.add('hidden');
+                sendChatBtn.disabled = false;
+            }
+        }
+
+        sendChatBtn.addEventListener('click', sendChatMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendChatMessage();
+            }
+        });
+
+
+        // --- Resume Matcher Functionality ---
+        const resumeMatcherFloatBtn = document.getElementById('resume-matcher-float-btn');
+        const resumeMatcherModal = document.getElementById('resume-matcher-modal');
+        const jobDescriptionInput = document.getElementById('job-description-input');
+        const analyzeJdBtn = document.getElementById('analyze-jd-btn');
+        const matchResultsDiv = document.getElementById('match-results');
+        const matchScoreSpan = document.getElementById('match-score');
+        const matchedKeywordsSpan = document.getElementById('matched-keywords');
+        const fitSummarySpan = document.getElementById('fit-summary');
+        const jdLoadingSpinner = document.getElementById('jd-loading-spinner');
+
+        resumeMatcherFloatBtn.addEventListener('click', () => openModal(resumeMatcherModal));
+
+        // Show Resume Matcher button on scroll (e.g., when reaching a certain section)
+        window.addEventListener('scroll', () => {
+            const aboutSection = document.getElementById('about');
+            const rect = aboutSection.getBoundingClientRect();
+            if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+                resumeMatcherFloatBtn.classList.remove('hidden');
+            } else {
+                resumeMatcherFloatBtn.classList.add('hidden');
+            }
+        });
+
+
+        async function analyzeJobDescription() {
+            const jobDescription = jobDescriptionInput.value.trim();
+            if (!jobDescription) {
+                // Replaced alert with console.error for Canvas environment
+                console.error("Please paste a job description to analyze.");
+                return;
+            }
+
+            jdLoadingSpinner.classList.remove('hidden');
+            analyzeJdBtn.disabled = true;
+            matchResultsDiv.classList.add('hidden'); // Hide previous results
+
+            try {
+                const structuredPrompt = {
+                    contents: [
+                        {
+                            role: "user",
+                            parts: [
+                                {
+                                    text: `Analyze the following job description against Muhammad Sohail's resume.
+                                    Provide a percentage match score, a list of top 5-10 matching keywords (comma-separated), and a concise summary (2-3 sentences) on why Muhammad's profile is a good fit.
+
+                                    Muhammad Sohail's Resume (Summary):
+                                    - Name: ${resumeData.name}
+                                    - Email: ${resumeData.email}
+                                    - Phone: ${resumeData.phone}
+                                    - LinkedIn: https://linkedin.com/in/${resumeData.linkedin}
+                                    - Location: ${resumeData.location}
+                                    - Experience: ${resumeData.experience.map(exp => `${exp.title} at ${exp.company} (${exp.duration}), focused on ${exp.description}`).join('; ')}.
+                                    - Education: ${resumeData.education.map(edu => `${edu.degree} from ${edu.institution} (${edu.duration})${edu.gpa ? `, GPA: ${edu.gpa}` : ''}${edu.coursework ? `, Coursework: ${edu.coursework}` : ''}`).join('; ')}.
+                                    - Projects: ${resumeData.projects.map(proj => `${proj.name} (Tools: ${proj.tools.join(', ')}) - ${proj.summary}`).join('; ')}.
+                                    - Skills (Programming): ${resumeData.skills["Programming"].join(', ')}.
+                                    - Skills (ML Frameworks): ${resumeData.skills["ML Frameworks"].join(', ')}.
+                                    - Skills (LLMs & RAG tools): ${resumeData.skills["LLMs & RAG tools"].join(', ')}.
+                                    - Skills (Machine Learning & AI Concepts): ${resumeData.skills["Machine Learning & AI Concepts"].join(', ')}.
+                                    - Skills (Deployment): ${resumeData.skills["Deployment"].join(', ')}.
+                                    - Skills (Tools): ${resumeData.skills["Tools"].join(', ')}.
+                                    - Languages (Spoken): ${Object.entries(resumeData.languages).map(([lang, proficiency]) => `${lang} (${proficiency})`).join(', ')}.
+
+
+                                    Job Description:
+                                    "${jobDescription}"
+
+                                    Provide the output as a JSON object with keys: "matchScore" (integer), "matchedKeywords" (string, comma-separated), "fitSummary" (string).`
+                                }
+                            ]
+                        }
+                    ],
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                        responseSchema: {
+                            type: "OBJECT",
+                            properties: {
+                                "matchScore": { "type": "NUMBER" },
+                                "matchedKeywords": { "type": "STRING" },
+                                "fitSummary": { "type": "STRING" }
+                            },
+                            required: ["matchScore", "matchedKeywords", "fitSummary"]
+                        }
+                    }
+                };
+
+                // Using the provided API key here
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(structuredPrompt)
+                });
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const jsonString = result.candidates[0].content.parts[0].text;
+                    const parsedJson = JSON.parse(jsonString);
+
+                    matchScoreSpan.textContent = parsedJson.matchScore;
+                    matchedKeywordsSpan.textContent = parsedJson.matchedKeywords;
+                    fitSummarySpan.textContent = parsedJson.fitSummary;
+                    matchResultsDiv.classList.remove('hidden');
+                } else {
+                    console.error("Could not analyze job description. Gemini API response structure unexpected:", result);
+                    // Add a user-friendly message in the UI instead of an alert
+                    matchResultsDiv.classList.remove('hidden');
+                    matchResultsDiv.innerHTML = '<p class="text-red-400">Error: Could not analyze the job description. Please try again.</p>';
+                }
+            } catch (error) {
+                console.error("Error analyzing job description with Gemini API:", error);
+                // Add a user-friendly message in the UI instead of an alert
+                matchResultsDiv.classList.remove('hidden');
+                matchResultsDiv.innerHTML = '<p class="text-red-400">An error occurred while analyzing the job description. Please try again later.</p>';
+            } finally {
+                jdLoadingSpinner.classList.add('hidden');
+                analyzeJdBtn.disabled = false;
+            }
+        }
+
+        analyzeJdBtn.addEventListener('click', analyzeJobDescription);
+
+
+        // --- Cold Email Generation ---
+        const coldEmailBotBtn = document.getElementById('cold-email-bot-btn');
+        const coldEmailModal = document.getElementById('cold-email-modal');
+        const coldEmailPromptInput = document.getElementById('cold-email-prompt-input');
+        const generateEmailBtn = document.getElementById('generate-email-btn');
+        const generatedEmailOutput = document.getElementById('generated-email-output');
+        const emailTextOutput = document.getElementById('email-text-output');
+        const copyEmailBtn = document.getElementById('copy-email-btn');
+        const emailLoadingSpinner = document.getElementById('email-loading-spinner');
+
+        coldEmailBotBtn.addEventListener('click', () => openModal(coldEmailModal));
+
+        async function generateColdEmail() {
+            const prompt = coldEmailPromptInput.value.trim();
+            if (!prompt) {
+                // Replaced alert with console.error for Canvas environment
+                console.error("Please enter a prompt for the email generation.");
+                return;
+            }
+
+            emailLoadingSpinner.classList.remove('hidden');
+            generateEmailBtn.disabled = true;
+            generatedEmailOutput.classList.add('hidden');
+
+            try {
+                const fullPrompt = `Generate a professional cold email based on the following request, as if you are someone writing an email to Muhammad Sohail or about hiring him.
+                Muhammad Sohail's contact: sohail.cs951@gmail.com, (33) 781588798. LinkedIn: https://linkedin.com/in/${resumeData.linkedin}.
+                He is a Data Scientist, ML Developer, LLM Enthusiast.
+                His current education is MSc M2 in Data Science and Network Intelligence at Institut Polytechnique de Paris, with coursework in ${resumeData.education[0].coursework}.
+                His experience includes Data Science Intern at Université Paris-Saclay (HR chatbot with LLMs/RAG) and Data Analyst Intern at Code Clause.
+                His key skills include: ${Object.values(resumeData.skills).flat().join(', ')}.
+                His projects include: ${resumeData.projects.map(p => p.name).join(', ')}.
+                Spoken Languages: ${Object.entries(resumeData.languages).map(([lang, proficiency]) => `${lang} (${proficiency})`).join(', ')}.
+
+                Prompt: "${prompt}"
+
+                The email should be well-structured, polite, and persuasive, and suitable for a professional context. Do not include a subject line. Just the body of the email.`;
+
+                const chatHistory = [{ role: "user", parts: [{ text: fullPrompt }] }];
+                const payload = { contents: chatHistory };
+                // Using the provided API key here
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const emailBody = result.candidates[0].content.parts[0].text;
+                    emailTextOutput.value = emailBody;
+                    generatedEmailOutput.classList.remove('hidden');
+                } else {
+                    console.error("Could not generate email. Gemini API response structure unexpected:", result);
+                    // Add a user-friendly message in the UI instead of an alert
+                    generatedEmailOutput.classList.remove('hidden');
+                    generatedEmailOutput.innerHTML = '<p class="text-red-400">Error: Could not generate the email. Please try again.</p>';
+                }
+            } catch (error) {
+                console.error("Error generating cold email with Gemini API:", error);
+                // Add a user-friendly message in the UI instead of an alert
+                    generatedEmailOutput.classList.remove('hidden');
+                    generatedEmailOutput.innerHTML = '<p class="text-red-400">An error occurred while generating the email. Please try again later.</p>';
+                } finally {
+                emailLoadingSpinner.classList.add('hidden');
+                generateEmailBtn.disabled = false;
+            }
+        }
+
+        generateEmailBtn.addEventListener('click', generateColdEmail);
+
+        copyEmailBtn.addEventListener('click', () => {
+            emailTextOutput.select();
+            document.execCommand('copy'); // Fallback for clipboard API in iframes
+            // Using console.log instead of alert
+            console.log('Email copied to clipboard!');
+            // Provide visual feedback without alert
+            const originalText = copyEmailBtn.textContent;
+            copyEmailBtn.textContent = 'Copied!';
+            setTimeout(() => { copyEmailBtn.textContent = originalText; }, 2000);
+        });
+
+
+        // --- Easter Egg ---
+        const llmEnthusiastSpan = document.querySelector('#animated-subtitle span:last-child');
+        const easterEggModal = document.getElementById('easter-egg-modal');
+
+        llmEnthusiastSpan.addEventListener('click', () => {
+            if (llmEnthusiastSpan.textContent.includes('LLM Enthusiast')) {
+                openModal(easterEggModal);
+            }
+        });
+
     </script>
 </body>
 </html>
