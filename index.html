@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammad Sohail - AI-Powered Data Scientist Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Custom CSS for particles and overall theme */
@@ -24,7 +26,7 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Roboto Mono', monospace; /* Overall font to Mono Space */
             background-color: var(--midnight-blue);
             color: var(--white);
             transition: background-color 0.3s, color 0.3s;
@@ -34,6 +36,12 @@
         body.light-mode {
             background-color: var(--light-bg);
             color: var(--light-text);
+        }
+
+        .audiowide-regular {
+            font-family: "Audiowide", sans-serif;
+            font-weight: 400;
+            font-style: normal;
         }
 
         .section-title {
@@ -106,6 +114,43 @@
         .dark-mode .timeline-item::before {
             box-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green);
         }
+
+        /* Custom bullet points for timeline */
+        .timeline-content-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            color: var(--white); /* Default for dark mode */
+        }
+        .light-mode .timeline-content-item {
+            color: var(--light-text);
+        }
+
+        .timeline-bullet {
+            width: 20px;
+            height: 20px;
+            min-width: 20px; /* Prevent shrinking */
+            min-height: 20px; /* Prevent shrinking */
+            background-color: var(--neon-green);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            box-shadow: 0 0 5px var(--neon-green);
+            color: var(--midnight-blue); /* Tick color */
+            font-size: 0.8em;
+            flex-shrink: 0; /* Prevent the bullet from shrinking */
+        }
+        .light-mode .timeline-bullet {
+            color: var(--light-bg); /* Tick color in light mode */
+        }
+
+        .timeline-content {
+            flex-grow: 1;
+            padding-top: 2px; /* Align text better with bullet */
+        }
+
 
         /* Project Card Hover Effect */
         .project-card {
@@ -182,7 +227,7 @@
             background-color: #2c9a94;
         }
 
-        .chatbot-modal, .resume-matcher-modal, .cold-email-modal {
+        .chatbot-modal, .resume-matcher-modal, .cold-email-modal, .easter-egg-modal {
             position: fixed;
             top: 50%;
             left: 50%;
@@ -198,8 +243,16 @@
             flex-direction: column;
             overflow: hidden;
             border: 1px solid var(--neon-green); /* Neon border */
+            opacity: 0; /* For fade in effect */
+            transform: translate(-50%, -50%) scale(0.9); /* For scale in effect */
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
         }
-        .light-mode .chatbot-modal, .light-mode .resume-matcher-modal, .light-mode .cold-email-modal {
+        .chatbot-modal.active, .resume-matcher-modal.active, .cold-email-modal.active, .easter-egg-modal.active {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .light-mode .chatbot-modal, .light-mode .resume-matcher-modal, .light-mode .cold-email-modal, .light-mode .easter-egg-modal {
             background-color: var(--light-bg);
             border: 1px solid var(--light-accent);
         }
@@ -349,7 +402,7 @@
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
-            .chatbot-modal, .resume-matcher-modal, .cold-email-modal {
+            .chatbot-modal, .resume-matcher-modal, .cold-email-modal, .easter-egg-modal {
                 width: 95%;
                 max-width: none;
             }
@@ -378,26 +431,79 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Easter Egg Modal */
-        .easter-egg-modal {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: var(--midnight-blue);
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-            z-index: 1002;
-            padding: 30px;
-            max-width: 400px;
-            text-align: center;
-            display: none;
+        /* Certifications List Style */
+        .certifications-list {
+            list-style: none; /* Remove default list style */
+            padding: 0;
+        }
+
+        .certifications-list-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 35px; /* Space for the custom bullet */
+        }
+
+        .certifications-list-item::before {
+            content: "\f00c"; /* FontAwesome check-mark icon */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--neon-green); /* Neon green for the checkmark */
+            font-size: 1.2em;
+        }
+        .light-mode .certifications-list-item::before {
+            color: var(--light-accent);
+        }
+
+        .cert-details {
+            flex-grow: 1;
+            color: var(--white); /* Default for dark mode */
+        }
+        .light-mode .cert-details {
+            color: var(--light-text);
+        }
+
+        .cert-title {
+            font-weight: 600;
+            color: var(--neon-green);
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+        .light-mode .cert-title {
+            color: var(--light-accent);
+        }
+
+        .cert-issuer-date {
+            color: var(--dark-text-secondary);
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+        .light-mode .cert-issuer-date {
+            color: var(--light-text-secondary);
+        }
+
+        .cert-skills .skill-badge {
+            background-color: rgba(56, 178, 172, 0.2); /* Lighter background for skills in cert list */
+            color: var(--neon-green);
             border: 1px solid var(--neon-green);
         }
-        .light-mode .easter-egg-modal {
-            background-color: var(--light-bg);
+        .light-mode .cert-skills .skill-badge {
+            background-color: rgba(49, 130, 206, 0.1);
+            color: var(--light-accent);
             border: 1px solid var(--light-accent);
         }
+        .cert-link {
+            color: var(--neon-green);
+            font-size: 0.9em;
+        }
+        .cert-link:hover {
+            text-decoration: underline;
+        }
+
     </style>
 </head>
 <body class="dark-mode">
@@ -476,10 +582,10 @@
     <div class="container mx-auto p-4 md:p-8">
         <!-- Hero Section -->
         <section id="hero" class="min-h-screen flex flex-col justify-center items-center text-center">
-            <h1 class="text-5xl md:text-7xl font-bold mb-4">Muhammad Sohail</h1>
-            <p class="text-xl md:text-2xl text-gray-300 mb-6">“From messy data to intelligent solutions.”</p>
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 audiowide-regular">Muhammad Sohail</h1>
+            <p id="dynamic-tagline" class="text-xl md:text-2xl text-gray-300 mb-6">Loading intelligent insights...</p>
             <p id="animated-subtitle" class="animated-subtitle text-2xl md:text-4xl font-mono text-neon-green mb-8">
-                <span style="animation-delay: 0s;">Data Scientist</span> <span style="animation-delay: 0.2s;">|</span>
+                <span style="animation-delay: 0s;">Data Science Intern</span> <span style="animation-delay: 0.2s;">|</span>
                 <span style="animation-delay: 0.4s;">ML Developer</span> <span style="animation-delay: 0.6s;">|</span>
                 <span style="animation-delay: 0.8s;">LLM Enthusiast</span>
             </p>
@@ -530,18 +636,26 @@
                 <div class="timeline-item">
                     <h3 class="text-2xl font-semibold text-neon-green">MSc M2 in Data Science and Network Intelligence</h3>
                     <p class="text-xl mb-2">Institut Polytechnique de Paris, France | Sep 2024 - Current</p>
-                    <ul class="list-disc list-inside text-gray-300 space-y-1">
-                        <li>GPA: 15.81</li>
-                        <li>Coursework: Data Science, Data Visualization, Deep Learning, Blockchain, Network Intelligence, Internet of Things (IoT), Distributed Networking, Business Modelling.</li>
-                    </ul>
+                    <div class="timeline-content-item">
+                        <span class="timeline-bullet"><i class="fas fa-check"></i></span>
+                        <p class="timeline-content">GPA: 15.81</p>
+                    </div>
+                    <div class="timeline-content-item">
+                        <span class="timeline-bullet"><i class="fas fa-check"></i></span>
+                        <p class="timeline-content">Coursework: Data Science, Data Visualization, Deep Learning, Blockchain, Network Intelligence, Internet of Things (IoT), Distributed Networking, Business Modelling.</p>
+                    </div>
                 </div>
                 <div class="timeline-item">
                     <h3 class="text-2xl font-semibold text-neon-green">Bachelor of Computer Science</h3>
                     <p class="text-xl mb-2">University of Malakand, Pakistan | Aug 2019 - Sep 2023</p>
-                    <ul class="list-disc list-inside text-gray-300 space-y-1">
-                        <li>GPA: 3.75</li>
-                        <li>Coursework: Programming Languages, Web Development, Database Management, Operating Systems, Networking, Software Engineering, AI, Mathematics, and Statistics.</li>
-                    </ul>
+                     <div class="timeline-content-item">
+                        <span class="timeline-bullet"><i class="fas fa-check"></i></span>
+                        <p class="timeline-content">GPA: 3.75</p>
+                    </div>
+                    <div class="timeline-content-item">
+                        <span class="timeline-bullet"><i class="fas fa-check"></i></span>
+                        <p class="timeline-content">Coursework: Programming Languages, Web Development, Database Management, Operating Systems, Networking, Software Engineering, AI, Mathematics, and Statistics.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -553,22 +667,42 @@
                 <div class="timeline-item">
                     <h3 class="text-2xl font-semibold text-neon-green">Data Science Intern</h3>
                     <p class="text-xl mb-2">Université Paris-Saclay | Mar 2025 - Present</p>
-                    <ul class="list-disc list-inside text-gray-300 space-y-1">
-                        <li>Developing an intelligent HR chatbot using LLMs and Retrieval-Augmented Generation (RAG) to automate staff inquiries on recruitment, leave, and training.</li>
-                        <li>Implementing robust validation mechanisms to ensure accurate and policy-compliant responses.</li>
-                        <li>Designing a user-friendly interface using Streamlit and Gradio, deployed within the university's internal data center.</li>
-                        <li>Leveraging tools like Unstructured.io, Docling, LlamaParse, pdfplumber, and LangChain for document parsing and knowledge extraction.</li>
-                        <li>Using open-source models such as LLaMA, Mistral, and others for generating contextual answers via API integration.</li>
-                    </ul>
+                    <div class="timeline-content-item">
+                        <span class="timeline-bullet"><i class="fas fa-check"></i></span>
+                        <p class="timeline-content">Developing an intelligent HR chatbot using LLMs and Retrieval-Augmented Generation (RAG) to automate staff inquiries on recruitment, leave, and training.</p>
+                    </div>
+                    <div class="timeline-content-item">
+                        <span class="timeline-bullet"><i class="fas fa-check"></i></span>
+                        <p class="timeline-content">Implementing robust validation mechanisms to ensure accurate and policy-compliant responses.</p>
+                    </div>
+                    <div class="timeline-content-item">
+                        <span class="timeline-bullet"><i class="fas fa-check"></i></span>
+                        <p class="timeline-content">Designing a user-friendly interface using Streamlit and Gradio, deployed within the university's internal data center.</p>
+                    </div>
+                    <div class="timeline-content-item">
+                        <span class="timeline-bullet"><i class="fas fa-check"></i></span>
+                        <p class="timeline-content">Leveraging tools like Unstructured.io, Docling, LlamaParse, pdfplumber, and LangChain for document parsing and knowledge extraction.</p>
+                    </div>
+                    <div class="timeline-content-item">
+                        <span class="timeline-bullet"><i class="fas fa-check"></i></span>
+                        <p class="timeline-content">Using open-source models such as LLaMA, Mistral, and others for generating contextual answers via API integration.</p>
+                    </div>
                 </div>
                 <div class="timeline-item">
                     <h3 class="text-2xl font-semibold text-neon-green">Data Analyst Intern (Remote)</h3>
                     <p class="text-xl mb-2">Code Clause Pvt Ltd. | Oct 2023 - Apr 2024</p>
-                    <ul class="list-disc list-inside text-gray-300 space-y-1">
-                        <li>Led data preparation tasks, including handling missing values and standardizing data for accurate analysis.</li>
-                        <li>Applied advanced statistical techniques (e.g., linear regression, hypothesis testing) to uncover insights and support decision-making.</li>
-                        <li>Delivered actionable insights via dashboards and reports, enhancing stakeholder understanding and driving strategic decisions.</li>
-                    </ul>
+                    <div class="timeline-content-item">
+                        <span class="timeline-bullet"><i class="fas fa-check"></i></span>
+                        <p class="timeline-content">Led data preparation tasks, including handling missing values and standardizing data for accurate analysis.</p>
+                    </div>
+                    <div class="timeline-content-item">
+                        <span class="timeline-bullet"><i class="fas fa-check"></i></span>
+                        <p class="timeline-content">Applied advanced statistical techniques (e.g., linear regression, hypothesis testing) to uncover insights and support decision-making.</p>
+                    </div>
+                    <div class="timeline-content-item">
+                        <span class="timeline-bullet"><i class="fas fa-check"></i></span>
+                        <p class="timeline-content">Delivered actionable insights via dashboards and reports, enhancing stakeholder understanding and driving strategic decisions.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -669,7 +803,7 @@
                         <button class="expand-project text-neon-green hover:underline" data-project="image-classification">Read More</button>
                     </div>
                     <div id="image-classification-summary" class="hidden mt-4 text-sm text-gray-400">
-                        Detailed summary: I built a simple image classifier using TensorFlow. The model distinguishes between image categories using a convolutional neural network (CNN). I preprocessed the image data—resizing, normalizing, and even augmenting to boost performance. The CNN, built with TensorFlow’s Keras API, learned to identify key features in images. Techniques like dropout and pooling were used to improve accuracy and reduce overfitting. This project sharpened my skills in deep learning and model evaluation, provided hands-on experience in tuning hyperparameters and troubleshooting model performance, and was a great step in my journey into AI.
+                        Detailed summary: I built a simple image classifier using TensorFlow. The model distinguishes between image categories using a convolutional neural network (CNN). I preprocessed the image data—resizing, normalizing, and even augmenting to boost performance. The CNN, built with TensorFlow’s Keras API, learned to identify key features in images. Techniques like dropout and pooling were used to improve accuracy and reduce overfitting. This project sharpened my skills in deep learning and model evaluation, provided hands-on experience in tuning hyperparameters and troubleshooting model performance, and was a great step in my journey into AI."
                     </div>
                 </div>
 
@@ -697,6 +831,15 @@
                 <i class="fas fa-chart-line text-neon-green mr-2"></i>Projects: <span id="projects-counter">0</span>+
             </p>
         </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="py-20">
+            <h2 class="section-title text-4xl font-bold mb-10 text-center">Licenses & Certifications</h2>
+            <div class="max-w-3xl mx-auto certifications-list">
+                <!-- Certifications will be dynamically loaded here by JavaScript -->
+            </div>
+        </section>
+
 
         <!-- Skills & Tools Section -->
         <section id="skills" class="py-20">
@@ -810,11 +953,8 @@
         <!-- Footer -->
         <footer class="py-10 text-center text-gray-500 text-sm">
             <p>Copyright © Muhammad Sohail</p>
-            <p class="mt-2">Built with <span class="text-red-500">♥</span> using Gemini & Streamlit-inspired design</p>
-            <div class="mt-4 flex justify-center space-x-4">
-                <a href="https://example.com/sohail_resume.pdf" target="_blank" class="hover:text-neon-green">Resume PDF</a>
-                <a href="https://github.com/muhammadsohail951/portfolio" target="_blank" class="hover:text-neon-green">GitHub Pages Repo</a>
-            </div>
+            <!-- Removed "Built with ♥ using Gemini & Streamlit-inspired design" -->
+            <!-- Removed "Resume PDF" and "GitHub Pages Repo" links -->
         </footer>
     </div>
 
@@ -939,7 +1079,65 @@
                 "Pashto": "Native/Bilingual",
                 "Urdu": "Native/Bilingual",
                 "French": "Basic"
-            }
+            },
+            certifications: [
+                {
+                    title: "Python (Basic) Certificate",
+                    issuer: "HackerRank",
+                    issued_date: "Mar 2023",
+                    credential_link: "https://www.hackerrank.com/certificates/a3447be213bd",
+                    skills: ["Python (Programming Language)"]
+                },
+                {
+                    title: "Introduction to Deep Learning & Neural Networks with Keras",
+                    issuer: "Coursera",
+                    issued_date: "Sep 2022",
+                    credential_link: "https://coursera.org/share/c998d49d5e64e32df7f1974cda8d9397",
+                    skills: []
+                },
+                {
+                    title: "Basic Image Classification with Tensorflow",
+                    issuer: "Coursera",
+                    issued_date: "Jun 2022",
+                    credential_link: "https://coursera.org/share/414d8fb6fb50c392725ef00c2061fc99",
+                    skills: ["Scikit-Learn", "Data Science"]
+                },
+                {
+                    title: "Create a Profile and Network on LinkedIn",
+                    issuer: "Coursera",
+                    issued_date: "Jun 2022",
+                    credential_link: "https://coursera.org/share/a901b5e0e309932e99133a861b4f22b4",
+                    skills: []
+                },
+                {
+                    title: "Deep Learning with PyTorch : Image Segmentation",
+                    issuer: "Coursera",
+                    issued_date: "Jun 2022",
+                    credential_link: "https://coursera.org/share/288d38048b91c568676c6df17817d2e6",
+                    skills: ["Scikit-Learn", "Data Science"]
+                },
+                {
+                    title: "Machine Learning With Python",
+                    issuer: "Coursera",
+                    issued_date: "Jun 2022",
+                    credential_link: "https://coursera.org/share/51781f6e8a1acc10b4d55c96eba6c840",
+                    skills: ["Scikit-Learn", "Natural Language Processing (NLP)"]
+                },
+                {
+                    title: "Statement of Accomplishment",
+                    issuer: "DataCamp",
+                    issued_date: "Oct 2021",
+                    credential_link: "https://www.datacamp.com/statement-of-accomplishment/course/7c0492242036abd0d589d9ff8119596960d41692",
+                    skills: ["Scikit-Learn", "Natural Language Processing (NLP)"]
+                },
+                {
+                    title: "Certificate of partcipation",
+                    issuer: "CyberVision International",
+                    issued_date: "Aug 2021",
+                    credential_link: null,
+                    skills: []
+                }
+            ]
         };
 
         // --- Global Variables for Firebase/Gemini API (Canvas Environment) ---
@@ -947,7 +1145,7 @@
         // fallback to default values (e.g., for local development).
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? initialAuthToken : null; // Corrected: Use initialAuthToken directly
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
         const apiKey = "AIzaSyD_FbycXS6CcgnSc61J7S-MzzjyWW0RlkI"; // API Key provided by the user
 
         // Initialize Firebase (if Firebase config is available)
@@ -1064,6 +1262,7 @@
             resizeCanvas();
             initParticles();
             animateParticles();
+            generateDynamicTagline(); // Call dynamic tagline generation on load
         });
         window.addEventListener('resize', resizeCanvas);
 
@@ -1203,13 +1402,14 @@
 
         function openModal(modal) {
             modal.style.display = 'flex';
-            setTimeout(() => modal.classList.add('opacity-100', 'scale-100'), 10); // For transition
+            modal.classList.add('active'); // Add active class for transition
         }
 
         function closeModalsFunc() {
             document.querySelectorAll('.chatbot-modal, .resume-matcher-modal, .cold-email-modal, .easter-egg-modal').forEach(modal => {
-                modal.style.display = 'none'; // Directly hide for now
-                modal.classList.remove('opacity-100', 'scale-100'); // Reset transition classes
+                modal.classList.remove('active'); // Remove active class for transition
+                // Give some time for the transition to complete before hiding
+                setTimeout(() => { modal.style.display = 'none'; }, 300);
             });
         }
 
@@ -1222,7 +1422,7 @@
 
         // Close modal when clicking outside
         window.addEventListener('click', (event) => {
-            if (event.target === chatbotModal || event.target === resumeMatcherModal || event.target === coldEmailModal || event.target === easterEggModal) {
+            if (event.target.classList.contains('chatbot-modal') || event.target.classList.contains('resume-matcher-modal') || event.target.classList.contains('cold-email-modal') || event.target.classList.contains('easter-egg-modal')) {
                 closeModalsFunc();
             }
         });
@@ -1270,6 +1470,8 @@
                 Languages (Spoken):
                 ${Object.entries(resumeData.languages).map(([lang, proficiency]) => `- ${lang} (${proficiency})`).join('\n')}
 
+                Certifications:
+                ${resumeData.certifications.map(cert => `- ${cert.title} from ${cert.issuer} (Issued: ${cert.issued_date})${cert.skills.length > 0 ? `, Skills: ${cert.skills.join(', ')}` : ''}${cert.credential_link ? `, Credential: ${cert.credential_link}` : ''}`).join('\n')}
 
                 User's question: "${userMessage}"
 
@@ -1342,7 +1544,6 @@
         async function analyzeJobDescription() {
             const jobDescription = jobDescriptionInput.value.trim();
             if (!jobDescription) {
-                // Replaced alert with console.error for Canvas environment
                 console.error("Please paste a job description to analyze.");
                 return;
             }
@@ -1377,6 +1578,7 @@
                                     - Skills (Deployment): ${resumeData.skills["Deployment"].join(', ')}.
                                     - Skills (Tools): ${resumeData.skills["Tools"].join(', ')}.
                                     - Languages (Spoken): ${Object.entries(resumeData.languages).map(([lang, proficiency]) => `${lang} (${proficiency})`).join(', ')}.
+                                    - Certifications: ${resumeData.certifications.map(cert => `${cert.title} from ${cert.issuer} (Issued: ${cert.issued_date})${cert.skills.length > 0 ? `, Skills: ${cert.skills.join(', ')}` : ''}`).join('; ')}.
 
 
                                     Job Description:
@@ -1424,13 +1626,11 @@
                     matchResultsDiv.classList.remove('hidden');
                 } else {
                     console.error("Could not analyze job description. Gemini API response structure unexpected:", result);
-                    // Add a user-friendly message in the UI instead of an alert
                     matchResultsDiv.classList.remove('hidden');
                     matchResultsDiv.innerHTML = '<p class="text-red-400">Error: Could not analyze the job description. Please try again.</p>';
                 }
             } catch (error) {
                 console.error("Error analyzing job description with Gemini API:", error);
-                // Add a user-friendly message in the UI instead of an alert
                 matchResultsDiv.classList.remove('hidden');
                 matchResultsDiv.innerHTML = '<p class="text-red-400">An error occurred while analyzing the job description. Please try again later.</p>';
             } finally {
@@ -1457,7 +1657,6 @@
         async function generateColdEmail() {
             const prompt = coldEmailPromptInput.value.trim();
             if (!prompt) {
-                // Replaced alert with console.error for Canvas environment
                 console.error("Please enter a prompt for the email generation.");
                 return;
             }
@@ -1469,12 +1668,13 @@
             try {
                 const fullPrompt = `Generate a professional cold email based on the following request, as if you are someone writing an email to Muhammad Sohail or about hiring him.
                 Muhammad Sohail's contact: sohail.cs951@gmail.com, (33) 781588798. LinkedIn: https://linkedin.com/in/${resumeData.linkedin}.
-                He is a Data Scientist, ML Developer, LLM Enthusiast.
+                He is a Data Science Intern, ML Developer, LLM Enthusiast.
                 His current education is MSc M2 in Data Science and Network Intelligence at Institut Polytechnique de Paris, with coursework in ${resumeData.education[0].coursework}.
                 His experience includes Data Science Intern at Université Paris-Saclay (HR chatbot with LLMs/RAG) and Data Analyst Intern at Code Clause.
                 His key skills include: ${Object.values(resumeData.skills).flat().join(', ')}.
                 His projects include: ${resumeData.projects.map(p => p.name).join(', ')}.
                 Spoken Languages: ${Object.entries(resumeData.languages).map(([lang, proficiency]) => `${lang} (${proficiency})`).join(', ')}.
+                Certifications: ${resumeData.certifications.map(cert => `${cert.title} from ${cert.issuer} (Issued: ${cert.issued_date})${cert.skills.length > 0 ? `, Skills: ${cert.skills.join(', ')}` : ''}`).join('; ')}.
 
                 Prompt: "${prompt}"
 
@@ -1501,16 +1701,14 @@
                     generatedEmailOutput.classList.remove('hidden');
                 } else {
                     console.error("Could not generate email. Gemini API response structure unexpected:", result);
-                    // Add a user-friendly message in the UI instead of an alert
                     generatedEmailOutput.classList.remove('hidden');
                     generatedEmailOutput.innerHTML = '<p class="text-red-400">Error: Could not generate the email. Please try again.</p>';
                 }
             } catch (error) {
                 console.error("Error generating cold email with Gemini API:", error);
-                // Add a user-friendly message in the UI instead of an alert
-                    generatedEmailOutput.classList.remove('hidden');
-                    generatedEmailOutput.innerHTML = '<p class="text-red-400">An error occurred while generating the email. Please try again later.</p>';
-                } finally {
+                generatedEmailOutput.classList.remove('hidden');
+                generatedEmailOutput.innerHTML = '<p class="text-red-400">An error occurred while generating the email. Please try again later.</p>';
+            } finally {
                 emailLoadingSpinner.classList.add('hidden');
                 generateEmailBtn.disabled = false;
             }
@@ -1521,9 +1719,7 @@
         copyEmailBtn.addEventListener('click', () => {
             emailTextOutput.select();
             document.execCommand('copy'); // Fallback for clipboard API in iframes
-            // Using console.log instead of alert
             console.log('Email copied to clipboard!');
-            // Provide visual feedback without alert
             const originalText = copyEmailBtn.textContent;
             copyEmailBtn.textContent = 'Copied!';
             setTimeout(() => { copyEmailBtn.textContent = originalText; }, 2000);
@@ -1539,6 +1735,80 @@
                 openModal(easterEggModal);
             }
         });
+
+        // --- Dynamic Tagline Generation ---
+        const dynamicTaglineElement = document.getElementById('dynamic-tagline');
+        async function generateDynamicTagline() {
+            try {
+                // Modified prompt to explicitly ask for one tagline without markdown
+                const prompt = `Generate a very concise (under 15 words) and impactful tagline for a Data Science Intern, ML Developer, and LLM Enthusiast. The tagline should subtly hint at AI, Data Science, and Retrieval-Augmented Generation (RAG). Make it sound intelligent and modern. Do NOT use any markdown formatting like asterisks (**). Provide only the tagline text.`;
+
+                const chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+                const payload = { contents: chatHistory };
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    // Ensure any residual markdown is stripped, though the prompt should prevent it
+                    let generatedText = result.candidates[0].content.parts[0].text;
+                    generatedText = generatedText.replace(/\*\*/g, '').trim(); // Remove any double asterisks
+                    dynamicTaglineElement.textContent = generatedText;
+                } else {
+                    dynamicTaglineElement.textContent = "Innovating with AI, one insight at a time.";
+                    console.error("Gemini API response for tagline unexpected:", result);
+                }
+            } catch (error) {
+                dynamicTaglineElement.textContent = "Transforming data into intelligent action.";
+                console.error("Error generating dynamic tagline:", error);
+            }
+        }
+
+        // --- Dynamic Certification Loading ---
+        function loadCertifications() {
+            const certificationsContainer = document.querySelector('#certifications .max-w-3xl.mx-auto'); // Target the div within certifications section
+            certificationsContainer.innerHTML = ''; // Clear existing content
+
+            resumeData.certifications.forEach(cert => {
+                const certItem = document.createElement('div');
+                certItem.classList.add('certifications-list-item'); // Apply new list item style
+
+                let skillsHtml = '';
+                if (cert.skills && cert.skills.length > 0) {
+                    skillsHtml = `
+                        <div class="cert-skills flex flex-wrap gap-2 mt-2">
+                            ${cert.skills.map(skill => `<span class="skill-badge">${skill}</span>`).join('')}
+                        </div>
+                    `;
+                }
+
+                let credentialLinkHtml = '';
+                if (cert.credential_link) {
+                    credentialLinkHtml = `<a href="${cert.credential_link}" target="_blank" class="cert-link flex items-center mt-2">Show Credential <i class="fas fa-external-link-alt ml-1"></i></a>`;
+                }
+
+                certItem.innerHTML = `
+                    <div class="cert-details">
+                        <p class="cert-title">${cert.title}</p>
+                        <p class="cert-issuer-date">${cert.issuer} | Issued: ${cert.issued_date}</p>
+                        ${skillsHtml}
+                        ${credentialLinkHtml}
+                    </div>
+                `;
+                certificationsContainer.appendChild(certItem);
+            });
+        }
+
+        // Call loadCertifications when the page loads
+        window.addEventListener('load', loadCertifications);
 
     </script>
 </body>
