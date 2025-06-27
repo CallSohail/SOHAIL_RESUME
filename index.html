@@ -435,33 +435,56 @@
         .certifications-list {
             list-style: none; /* Remove default list style */
             padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px; /* Spacing between certification items */
         }
 
         .certifications-list-item {
             display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            position: relative;
-            padding-left: 35px; /* Space for the custom bullet */
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: calc(33% - 20px); /* 3 items per row, accounting for gap */
+            min-width: 280px; /* Ensure readability on smaller screens */
+            max-width: 320px;
+            padding: 20px;
+            background-color: var(--dark-card-bg); /* Reuse card background */
+            border: 1px solid var(--dark-border);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
 
-        .certifications-list-item::before {
-            content: "\f00c"; /* FontAwesome check-mark icon */
-            font-family: "Font Awesome 5 Free";
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: var(--neon-green); /* Neon green for the checkmark */
-            font-size: 1.2em;
+        .light-mode .certifications-list-item {
+            background-color: #e2e8f0;
+            border: 1px solid var(--light-border);
         }
-        .light-mode .certifications-list-item::before {
+
+        .certifications-list-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 10px var(--neon-green);
+        }
+        .light-mode .certifications-list-item:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cert-icon {
+            font-size: 3em;
+            color: var(--neon-green);
+            margin-bottom: 15px;
+        }
+        .light-mode .cert-icon {
             color: var(--light-accent);
         }
 
         .cert-details {
             flex-grow: 1;
-            color: var(--white); /* Default for dark mode */
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .light-mode .cert-details {
             color: var(--light-text);
@@ -470,7 +493,7 @@
         .cert-title {
             font-weight: 600;
             color: var(--neon-green);
-            font-size: 1.1em;
+            font-size: 1.2em;
             margin-bottom: 5px;
         }
         .light-mode .cert-title {
@@ -480,16 +503,26 @@
         .cert-issuer-date {
             color: var(--dark-text-secondary);
             font-size: 0.9em;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
         .light-mode .cert-issuer-date {
             color: var(--light-text-secondary);
         }
 
+        .cert-skills {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+        }
         .cert-skills .skill-badge {
-            background-color: rgba(56, 178, 172, 0.2); /* Lighter background for skills in cert list */
+            background-color: rgba(56, 178, 172, 0.2);
             color: var(--neon-green);
             border: 1px solid var(--neon-green);
+            padding: 5px 10px;
+            font-size: 0.8em;
+            box-shadow: none; /* Remove glow for smaller badges */
         }
         .light-mode .cert-skills .skill-badge {
             background-color: rgba(49, 130, 206, 0.1);
@@ -499,9 +532,28 @@
         .cert-link {
             color: var(--neon-green);
             font-size: 0.9em;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
         }
         .cert-link:hover {
             text-decoration: underline;
+        }
+        .cert-link i {
+            margin-left: 5px;
+        }
+
+        /* Responsive adjustments for certifications */
+        @media (max-width: 1024px) {
+            .certifications-list-item {
+                width: calc(50% - 20px); /* 2 items per row */
+            }
+        }
+
+        @media (max-width: 640px) {
+            .certifications-list-item {
+                width: 90%; /* 1 item per row on very small screens */
+            }
         }
 
     </style>
@@ -582,6 +634,7 @@
     <div class="container mx-auto p-4 md:p-8">
         <!-- Hero Section -->
         <section id="hero" class="min-h-screen flex flex-col justify-center items-center text-center">
+            <img src="https://i.ibb.co/84BZsFhc/1729600793626.jpg" alt="Muhammad Sohail Profile Picture" class="w-32 h-32 rounded-full mb-6 mx-auto object-cover border-4 border-neon-green shadow-lg">
             <h1 class="text-5xl md:text-7xl font-bold mb-4 audiowide-regular">Muhammad Sohail</h1>
             <p id="dynamic-tagline" class="text-xl md:text-2xl text-gray-300 mb-6">Loading intelligent insights...</p>
             <p id="animated-subtitle" class="animated-subtitle text-2xl md:text-4xl font-mono text-neon-green mb-8">
@@ -1796,6 +1849,7 @@
                 }
 
                 certItem.innerHTML = `
+                    <div class="cert-icon"><i class="fas fa-award"></i></div> <!-- Added a generic award icon -->
                     <div class="cert-details">
                         <p class="cert-title">${cert.title}</p>
                         <p class="cert-issuer-date">${cert.issuer} | Issued: ${cert.issued_date}</p>
